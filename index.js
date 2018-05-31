@@ -2,7 +2,7 @@
 var express = require('express'),
     app = express(),
     //port = process.env.PORT || 3000,
-    port = 3000,
+    //port = 3000,
     bodyParser = require('body-parser');
     
 var todoRoutes = require('./routes/todos');
@@ -18,8 +18,8 @@ app.use('/api/todos', todoRoutes);
 
     //tell express to listen to a port specified by cloud9
     //and if it finds the endpoint, to log it to terminal
-app.listen(port, function(){
-    console.log("APP IS RUNNING ON PORT " + process.env.PORT);
+app.listen(3000, function(){
+    console.log("APP IS RUNNING ON PORT " + 3000);
 });
 
 
