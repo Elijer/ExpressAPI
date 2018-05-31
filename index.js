@@ -2,6 +2,10 @@ var express = require('express'),
     port = 3000,
     app = express();
     
+app.get('/', function(req, res){
+    res.send("Hi there from express!");
+});
+    
 app.listen(3000, function(){
     console.log("APP IS RUNNING ON PORT " + port);
 });
