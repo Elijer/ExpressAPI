@@ -1,10 +1,17 @@
-//save express library to the variable 'app' for future use
 var express = require('express'),
-    app = express(),
+    port = 3000,
+    app = express();
+    
+app.listen(3000, function(){
+    console.log("APP IS RUNNING ON PORT " + port);
+});
+    
+    
     //port = process.env.PORT || 3000,
     //port = 3000,
-    bodyParser = require('body-parser');
+    //bodyParser = require('body-parser');
     
+/*
 var todoRoutes = require('./routes/todos');
 
 app.use(bodyParser.json());
@@ -21,7 +28,7 @@ app.use('/api/todos', todoRoutes);
 app.listen(3000, function(){
     console.log("APP IS RUNNING ON PORT " + 3000);
 });
-
+*/
 
         //NOTES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
