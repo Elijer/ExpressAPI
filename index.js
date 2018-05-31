@@ -1,7 +1,8 @@
 //save express library to the variable 'app' for future use
 var express = require('express'),
     app = express(),
-    port = process.env.PORT || 3000,
+    //port = process.env.PORT || 3000,
+    port = 8080,
     bodyParser = require('body-parser');
     
 var todoRoutes = require('./routes/todos');
