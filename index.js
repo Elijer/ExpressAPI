@@ -3,7 +3,7 @@ var express = require('express'),
     app = express();
     
 app.get('/', function(req, res){
-    res.send("Hi there from express!");
+    res.send("Hi there from yer mom!");
 });
 
 app.get('/pizza', function(req, res){
