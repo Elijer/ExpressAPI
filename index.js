@@ -7,7 +7,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/pizza', function(req, res){
-    res.send("Here is your pizza (). Sorry, it's kinda shitty");
+    res.send({message: "Hi from JS object"});
 });
     
 app.listen(port, function(){
@@ -48,3 +48,5 @@ app.listen(3000, function(){
 //you might need to do this, as AWS does not gaurantee a static IP, so I guess it's subject to change.
 
 //use following command to kill mongo: "sudo service mongod stop"
+//echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
+//chmod a+x mongod
