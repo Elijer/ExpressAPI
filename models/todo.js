@@ -19,7 +19,7 @@ var todoSchema = new mongoose.Schema({
 //compiles this into a model and saves to variable\
 var Todo = mongoose.model('Todo', todoSchema);
 
-//sends out the Todo model
+//sends out the Todo
 module.exports = Todo;
 
 

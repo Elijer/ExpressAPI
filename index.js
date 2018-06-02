@@ -3,21 +3,25 @@ var express = require('express'),
     app = express();
     
 app.get('/', function(req, res){
-    res.send("Hi there from yer mom!");
+    res.send("hello from the root route");
 });
 
-app.get('/pizza', function(req, res){
-    res.send({message: "Hi from JS object"});
-});
+var todoRoutes = require('./routes/todos');
+app.use('/api/todos', todoRoutes);
     
 app.listen(port, function(){
     console.log("APP IS RUNNING ON PORT " + port);
 });
     
     
-    //port = process.env.PORT || 3000,
-    //port = 3000,
-    //bodyParser = require('body-parser');
+    
+    
+    
+    
+    
+//port = process.env.PORT || 3000,
+//port = 3000,
+//bodyParser = require('body-parser');
     
 /*
 var todoRoutes = require('./routes/todos');
@@ -42,7 +46,7 @@ app.listen(3000, function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //remember not to copy the double slashes though...
 //public endpoints w/ current IP address
-//http://34.207.119.226:8080/
+//http://54.86.60.68:8080
 
 //to get public ip run "curl http://169.254.169.254/latest/meta-data/public-ipv4"
 //you might need to do this, as AWS does not gaurantee a static IP, so I guess it's subject to change.
