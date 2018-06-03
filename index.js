@@ -19,7 +19,7 @@ app.get('/Carla', function(req, res){
 });
 
 app.get('/elijah', function(req, res){
-    res.send("oddly creative in comparison to his other fams. sometimes wondered if adopted.");
+    res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
 });
 
 var todoRoutes = require('./routes/todos');
