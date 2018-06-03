@@ -18,6 +18,10 @@ app.get('/Carla', function(req, res){
     res.send("Weakness: Accomodating to a fault.");
 });
 
+app.get('/Sadie', function(req, res){
+	res.send("incredibly emotive, but exclusively so on a spectrum within melancholy and depressed. sort of like eyore, but more eager to please.");
+}); 
+
 app.get('/elijah', function(req, res){
     res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
 });
