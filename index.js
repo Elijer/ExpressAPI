@@ -3,7 +3,23 @@ var express = require('express'),
     app = express();
     
 app.get('/', function(req, res){
-    res.send("hello from the root route");
+    res.send("Type in a family member to get a description");
+});
+
+app.get('/noah', function(req, res){
+    res.send("weirdly driven in a way that, at times seems very foreign from both his parents.");
+});
+
+app.get('/ted', function(req, res){
+    res.send("Annoying when drunk.");
+});
+
+app.get('/Carla', function(req, res){
+    res.send("Weakness: Accomodating to a fault.");
+});
+
+app.get('/elijah', function(req, res){
+    res.send("oddly creative in comparison to his other fams. sometimes wondered if adopted.");
 });
 
 var todoRoutes = require('./routes/todos');
