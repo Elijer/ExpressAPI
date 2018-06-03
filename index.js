@@ -3,7 +3,7 @@ var express = require('express'),
     app = express();
     
 app.get('/', function(req, res){
-    res.send("Type in a family member to get a description");
+    res.send("Type in a family member to get a description!");
 });
 
 app.get('/noah', function(req, res){
