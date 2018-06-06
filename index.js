@@ -1,5 +1,5 @@
 var express = require('express'),
-    port = 3000,
+    port = require('./elijah/port'),
     app = express();
     
 app.get('/', function(req, res){
