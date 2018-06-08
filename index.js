@@ -1,6 +1,10 @@
 var express = require('express'),
     port = require('./elijah/port'),
-    app = express();
+    app = express(),
+    bodyParser = require('body-parser');
+    
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
     
 app.get('/', function(req, res){
     res.send("Type in a family member to get a description!");
