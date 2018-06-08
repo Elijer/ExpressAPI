@@ -33,7 +33,9 @@ router.get('/:todoId', function(req, res){
 });
 
 router.put('/:todoId', function(req, res){
-    db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body)
+    db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true})
+    //adding the {new:true" argument means that mongoose will respond with the updated item, rather than what it was before
+    //which is what it does by default
     .then(function(todo){
         res.json(todo);
     })
@@ -41,5 +43,15 @@ router.put('/:todoId', function(req, res){
         res.send(err);
     });
 });
+
+router.delete('/:todoId', function(req, res){
+    db.Todo.remove({_id: req.params.todoId})
+    .then(function(){
+        res.json({message: 'We delted it!'})
+    })
+    .catch(function(err){
+        res.send(err);
+    })
+})
 
 module.exports = router;
