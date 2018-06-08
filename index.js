@@ -2,8 +2,13 @@ var express = require('express'),
     port = require('./elijah/port'),
     app = express(),
     bodyParser = require('body-parser');
+<<<<<<< HEAD
     
 var todoRoutes = require("./routes/todos");
+=======
+
+var todoRoutes = require('./routes/todos');
+>>>>>>> f76ff42fef9c288497abaa736ceb247324d806b5
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
