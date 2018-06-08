@@ -9,7 +9,11 @@ router.get('/', function(req, res){
     })
     .catch(function(err){
         res.send(err);
-    })
+    });
+});
+
+router.post('/', function(req, res){
+    console.log(req.body);
 });
 
 module.exports = router;
