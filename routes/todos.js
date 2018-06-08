@@ -9,11 +9,17 @@ router.get('/', function(req, res){
     })
     .catch(function(err){
         res.send(err);
-    })
+    });
 });
 
 router.post('/', function(req, res){
-    console.log(req.body);
-})
+    db.Todo.create(req.body)
+    .then(function(newTodo){
+        res.json(newTodo);
+    })
+    .catch(function(err){
+        res.send(err);
+    });
+});
 
 module.exports = router;

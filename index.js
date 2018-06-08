@@ -2,7 +2,9 @@ var express = require('express'),
     port = require('./elijah/port'),
     app = express(),
     bodyParser = require('body-parser');
-    
+
+var todoRoutes = require('./routes/todos');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
     
@@ -30,7 +32,6 @@ app.get('/elijah', function(req, res){
     res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
 });
 
-var todoRoutes = require('./routes/todos');
 app.use('/api/todos', todoRoutes);
     
 app.listen(port, function(){
@@ -68,7 +69,7 @@ app.listen(3000, function(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //remember not to copy the double slashes though...
 //public endpoints w/ current IP address
-//http://18.207.122.52:8080
+//http://34.201.111.121:8080
 
 //to get public ip run "curl http://169.254.169.254/latest/meta-data/public-ipv4"
 //you might need to do this, as AWS does not gaurantee a static IP, so I guess it's subject to change.
