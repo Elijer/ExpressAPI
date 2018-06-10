@@ -1,6 +1,6 @@
 //public endpoints w/ current IP address
 //curl http://169.254.169.254/latest/meta-data/public-ipv4
-//http://54.86.114.85:8080
+//http://18.205.25.152:8080
 
 var express = require('express'),
     port = require('./elijah/port'),
@@ -8,6 +8,12 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 var todoRoutes = require('./routes/todos');
+app.use('/api/todos', todoRoutes);
+
+var flameRoutes = require('./routes/flames');
+app.use('/api/flames', flameRoutes);
+
+
 app.use(express.static(__dirname + '/views'));
 
 app.use(bodyParser.json());
@@ -37,8 +43,6 @@ app.get('/Sadie', function(req, res){
 app.get('/elijah', function(req, res){
     res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
 });
-
-app.use('/api/todos', todoRoutes);
     
 app.listen(port, function(){
     console.log("APP IS RUNNING ON PORT " + port);
