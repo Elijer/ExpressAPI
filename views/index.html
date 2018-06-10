@@ -43,7 +43,7 @@
       });
       
       function createFlame(lat, lng){
-        $.post('/api/flames', {lat: 4, lng: 12})
+        $.post('/api/flames', {lat: lat, lng: lng})
         .then(function(newFlame){
           console.log(newFlame);
         })
