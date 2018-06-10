@@ -22,10 +22,11 @@
         })
         .addListener('click', function(e) {
           var latLng = e.latLng;
-          console.log(latLng.lat());
-          console.log(latLng.lng());
+          var lat = latLng.lat();
+          var lng = latLng.lng();
           if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
-              console.log("logged coords");
+              console.log(lat);
+              console.log(lng);
           } else {
               console.log("cancelled logging of coords");
           }
