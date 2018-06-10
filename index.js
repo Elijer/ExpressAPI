@@ -1,18 +1,16 @@
 //public endpoints w/ current IP address
 //curl http://169.254.169.254/latest/meta-data/public-ipv4
-//http://18.205.25.152:8080
 
 var express = require('express'),
     port = require('./elijah/port'),
     app = express(),
     bodyParser = require('body-parser');
 
-var todoRoutes = require('./routes/todos');
+var todoRoutes = require('./API_Todo/routes/todos');
 app.use('/api/todos', todoRoutes);
 
-var flameRoutes = require('./routes/flames');
+var flameRoutes = require('./API_Flame/routes/flames');
 app.use('/api/flames', flameRoutes);
-
 
 app.use(express.static(__dirname + '/views'));
 

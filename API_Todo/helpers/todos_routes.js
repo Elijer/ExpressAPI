@@ -1,4 +1,4 @@
-var db = require('../flameModels');
+var db = require('../models');
 
 exports.getTodos = function(req, res){
     db.Todo.find()

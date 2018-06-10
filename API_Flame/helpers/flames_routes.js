@@ -1,4 +1,4 @@
-var db = require('../todoModels');
+var db = require('../models');
 
 exports.getTodos = function(req, res){
     db.Todo.find()
