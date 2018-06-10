@@ -27,6 +27,7 @@
           if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
               console.log(lat);
               console.log(lng);
+              //createFlame(lat, lng);
           } else {
               console.log("cancelled logging of coords");
           }
@@ -40,6 +41,16 @@
              console.log(data);
          });
       });
+      
+      function createFlame(lat, lng){
+        $.post('/api/flames', {lat: lat, lng: lng})
+        .then(function(newFlame){
+          console.log(newFlame);
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+      }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E&callback=initMap"
     async defer></script>
