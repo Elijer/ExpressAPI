@@ -5,6 +5,11 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="vanilla.css">
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
   </head>
   <body>
     <div id="map"></div>
@@ -23,9 +28,17 @@
               console.log("logged coords");
           } else {
               console.log("cancelled logging of coords");
-          };
+          }
         });
       }
+      /* global $ */
+      $(document).ready(function(){
+         console.log("DA DOKKY IS REDDY");
+         $.getJSON('https://www.squarrow.icu/api/todos')
+         .then(function(data){
+             console.log(data);
+         });
+      });
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E&callback=initMap"
     async defer></script>
