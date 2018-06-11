@@ -10,7 +10,7 @@ var todoRoutes = require('./API_Todo/routes/todos');
 var flameRoutes = require('./API_Flame/routes/flames');
 
 app.use(express.static(__dirname + '/views'));
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);

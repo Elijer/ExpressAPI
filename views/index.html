@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link rel="stylesheet" href="vanilla.css" type="text/css">
+    <!--JQUERY-->
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -13,45 +14,9 @@
   </head>
   <body>
     <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        })
-        .addListener('click', function(e) {
-          var latLng = e.latLng;
-          var lat = latLng.lat();
-          var lng = latLng.lng();
-          if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
-              console.log(lng);
-              console.log(lat);
-              createFlame(lat, lng);
-          } else {
-              console.log("cancelled logging of coords");
-          }
-        });
-      }
-      /* global $ */
-      $(document).ready(function(){
-         console.log("DA DOKKY IS REDDY");
-         $.getJSON('https://www.squarrow.icu/api/flames')
-         .then(function(data){
-             console.log(data);
-         });
-      });
-      
-      function createFlame(lat, lng){
-        $.post('/api/flames', {lat: lat, lng: lng})
-        .then(function(newFlame){
-          console.log(newFlame);
-        })
-        .catch(function(err){
-          console.log(err);
-        });
-      }
-    </script>
+    <!--APP LOGIC-->
+    <script type="text/javascript" src="app.js"></script>
+    <!--GOOGLE MAPS API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E&callback=initMap"
     async defer></script>
   </body>
