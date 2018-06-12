@@ -20,14 +20,14 @@ var map;
       /* global $ */
       $(document).ready(function(){
          console.log("DA DOKKY IS REDDY");
-         $.getJSON('https://www.squarrow.icu/api/flames')
+         $.getJSON('/api/flames')
          .then(function(data){
              console.log(data);
          });
       });
       
       function createFlame(lat, lng){
-        $.post('https://www.squarrow.icu/api/flames', {lat: lat, lng: lng})
+        $.post('/api/flames', {lat: lat, lng: lng})
         .then(function(newFlame){
           console.log(newFlame);
         })
