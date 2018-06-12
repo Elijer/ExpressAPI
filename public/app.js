@@ -27,7 +27,7 @@ var map;
       });
       
       function createFlame(lat, lng){
-        $.post('/api/flames', {lat: lat, lng: lng})
+        $.post('https://www.squarrow.icu/api/flames', {lat: lat, lng: lng})
         .then(function(newFlame){
           console.log(newFlame);
         })
