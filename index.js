@@ -1,6 +1,6 @@
 //public endpoints w/ current IP address
 //curl http://169.254.169.254/latest/meta-data/public-ipv4
-//http://52.91.102.175:8080
+//http://54.175.96.228:8080
 
 var express = require('express'),
     port = require('./elijah/port'),

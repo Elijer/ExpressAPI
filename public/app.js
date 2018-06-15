@@ -20,14 +20,14 @@ var map;
       /* global $ */
       $(document).ready(function(){
          console.log("DA DOKKY IS REDDY");
-         $.getJSON('/api/flames')
+         $.getJSON('api/flames')
          .then(function(data){
              console.log(data);
          });
       });
       
       function createFlame(lat, lng){
-        $.post('/api/flames', {lat: lat, lng: lng})
+        $.post('https://www.squarrow.icu/api/todos', {name: "yo does this work at all"})
         .then(function(newFlame){
           console.log(newFlame);
         })
