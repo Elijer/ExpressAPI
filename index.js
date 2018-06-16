@@ -1,6 +1,7 @@
-//public endpoints w/ current IP address
-//curl http://169.254.169.254/latest/meta-data/public-ipv4
-//http://54.86.114.85:8080
+/*public endpoints w/ current IP address
+curl http://169.254.169.254/latest/meta-data/public-ipv4
+http://54.174.153.254:8080
+*/
 
 var express = require('express'),
     port = require('./elijah/port'),
@@ -16,26 +17,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 //serves a static page
 app.get('/', function(req, res){
     res.sendFile("index.html");
-});
-
-app.get('/noah', function(req, res){
-    res.send("weirdly driven in a way that, at times seems very foreign from both his parents.");
-});
-
-app.get('/ted', function(req, res){
-    res.send("Annoying when drunk.");
-});
-
-app.get('/Carla', function(req, res){
-    res.send("Weakness: Accomodating to a fault.");
-});
-
-app.get('/Sadie', function(req, res){
-	res.send("incredibly emotive, but exclusively so on a spectrum within melancholy and depressed. sort of like eyore, but more eager to please.");
-}); 
-
-app.get('/elijah', function(req, res){
-    res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
 });
 
 app.use('/api/todos', todoRoutes);
@@ -70,3 +51,31 @@ app.listen(3000, function(){
 
 //echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
 //chmod a+x mongod
+
+
+
+
+
+
+
+/*
+app.get('/noah', function(req, res){
+    res.send("weirdly driven in a way that, at times seems very foreign from both his parents.");
+});
+
+app.get('/ted', function(req, res){
+    res.send("Annoying when drunk.");
+});
+
+app.get('/Carla', function(req, res){
+    res.send("Weakness: Accomodating to a fault.");
+});
+
+app.get('/Sadie', function(req, res){
+	res.send("incredibly emotive, but exclusively so on a spectrum within melancholy and depressed. sort of like eyore, but more eager to please.");
+}); 
+
+app.get('/elijah', function(req, res){
+    res.send("different. is that indulgently egoistic to say? I dunno. I'm weird. Sorta inconvenient a lot of the time");
+});
+*/
