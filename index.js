@@ -12,11 +12,11 @@ var flameRoutes = require('./API_Flame/routes/flames');
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 
-app.use('/api/todos', todoRoutes);
-app.use('/api/flames', flameRoutes);
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+app.use('/api/todos', todoRoutes);
+app.use('/api/flames', flameRoutes);
     
 //serves a static page
 app.get('/', function(req, res){
