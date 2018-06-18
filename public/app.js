@@ -27,7 +27,7 @@ var map;
       });
       
       function createFlame(lat, lng){
-        $.post('https://www.squarrow.icu/api/todos', {name: "yo does this work at all"})
+        $.post('https://www.squarrow.icu/api/flames', {lat: lat, lng: lng})
         .then(function(newFlame){
           console.log(newFlame);
         })
