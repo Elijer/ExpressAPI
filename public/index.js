@@ -1,4 +1,7 @@
 var $ = require('jquery');
+var rootURL = require('./rootURL');
+console.log(rootURL);
+
 const loadGoogleMapsApi = require('load-google-maps-api');
 var gmaps_key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
