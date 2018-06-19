@@ -1,8 +1,3 @@
-var poop = require('./poop');
-console.log(poop);
-
-var gmapsAPI = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E&callback=initMap';
-
 var map;
       function initMap() {
         map = new gmapsAPI.maps.Map(document.getElementById('map'), {
