@@ -1,6 +1,7 @@
+/*global google*/ /* <-- this is just to get rid of google related errors cloud9 sees*/
 var $ = require('jquery');
 var rootURL = require('./rootURL');
-console.log(rootURL);
+console.log("root URL is " + rootURL);
  
 var loadGoogleMapsApi = require('load-google-maps-api-2');
 /*note that the googleMaps object this npm package returns
@@ -9,6 +10,13 @@ the googlemaps API directly from google.
 Therefore, googleMaps.maps will return an error */
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var map;
+ 
+loadGoogleMapsApi().then(function (googleMaps) {
+  newMap(googleMaps);
+  newMarker(googleMaps);
+}).catch(function (err) {
+  console.error(err);
+});
 
 var newMap = function(gmapObject){
   //create map
@@ -16,23 +24,15 @@ var newMap = function(gmapObject){
     center: {lat: -34.397, lng: 150.644},
     zoom: 8
   });
-  
+};
+
+var newMarker = function(){
   //create marker
   var marker = new google.maps.Marker({
   position: {lat: -34.397, lng: 150.644},
   map: map
-});
-  
-}
- 
-loadGoogleMapsApi().then(function (googleMaps) {
-  console.log(googleMaps);
-  console.log("success");
-  newMap(googleMaps);
-  
-}).catch(function (err) {
-  console.error(err);
-});
+  });
+};
 
 
 
