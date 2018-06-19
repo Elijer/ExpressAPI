@@ -1,2 +1,2 @@
-var rootURL = 'http://54.84.240.197:8080';
+var rootURL = 'https://www.squarrow.icu/';
 module.exports = rootURL;
