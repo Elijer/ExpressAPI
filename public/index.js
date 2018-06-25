@@ -12,7 +12,9 @@ loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var map;
  
 loadGoogleMapsApi().then(function (googleMaps) {
-  newMap(googleMaps);
+  map = newMap(googleMaps);
+  addClickListener(map, rootURL);
+  //console.log(map);
   newMarker(googleMaps);
 }).catch(function (err) {
   console.error(err);
@@ -24,6 +26,7 @@ var newMap = function(gmapObject){
     center: {lat: -34.397, lng: 150.644},
     zoom: 8
   });
+  return map;
 };
 
 var newMarker = function(){
@@ -33,6 +36,54 @@ var newMarker = function(){
   map: map
   });
 };
+
+var addClickListener = function(aMap, rootURL){
+    aMap.addListener('click', function(e) {
+    var latLng = e.latLng;
+    var lat = latLng.lat();
+    var lng = latLng.lng();
+    if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
+        console.log(lng);
+        console.log(lat);
+        createFlame(lat, lng, rootURL);
+    } else {
+        console.log("cancelled logging of coords");
+    }
+  });
+}
+
+var createFlame = function(lat, lng, rootUrl){
+      $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
+      .then(function(newFlame){
+        console.log(newFlame);
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+      
+    /*var shmoop = new google.maps.Marker({
+        position: {lat: lat, lng: lng},
+        map: map
+    });*/
+}
+    
+$(document).ready(function(){
+ console.log("DA DOKKY IS REDDY");
+ $.getJSON('api/flames')
+ .then(function(data){
+     console.log(data);
+     //console.log("hey buddy boy boo");
+     data.forEach(function(e){
+         console.log(e.lat);
+         console.log(e.lng);
+         var shmoooop = new google.maps.Marker({
+            position: {lat: e.lat, lng: e.lng},
+            map: map
+        });
+     });
+ });
+ //
+});
 
 
 
