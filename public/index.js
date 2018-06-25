@@ -60,12 +60,7 @@ var createFlame = function(lat, lng, rootUrl){
       .catch(function(err){
         console.log(err);
       });
-      
-    /*var shmoop = new google.maps.Marker({
-        position: {lat: lat, lng: lng},
-        map: map
-    });*/
-}
+};
     
 $(document).ready(function(){
  console.log("DA DOKKY IS REDDY");
@@ -74,8 +69,8 @@ $(document).ready(function(){
      console.log(data);
      //console.log("hey buddy boy boo");
      data.forEach(function(e){
-         console.log(e.lat);
-         console.log(e.lng);
+         //console.log(e.lat);
+         //console.log(e.lng);
          var shmoooop = new google.maps.Marker({
             position: {lat: e.lat, lng: e.lng},
             map: map
