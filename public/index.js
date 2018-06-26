@@ -13,13 +13,14 @@ loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var map;
 var newMap = require('./Maps/newMap'),
     addClickListener = require('./Maps/addClickListener'),
-    createFlame = require('./Maps/createFlame');
+    createFlame = require('./Maps/createFlame'),
+    getFlames = require('./Maps/getFlames');
 
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
   console.log("googlemaps");
-  getFlames(googleMaps);
+  getFlames(googleMaps, map);
   addClickListener(map, rootURL, createFlame);
 }).catch(function (err) {
   console.error(err);
