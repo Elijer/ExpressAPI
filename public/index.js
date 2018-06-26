@@ -13,9 +13,9 @@ var map;
  
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
+  getFlames();
   addClickListener(map, rootURL);
-  //console.log(map);
-  newMarker(googleMaps);
+  //newMarker(googleMaps);
 }).catch(function (err) {
   console.error(err);
 });
@@ -62,23 +62,22 @@ var createFlame = function(lat, lng, rootUrl){
       });
 };
     
-$(document).ready(function(){
- console.log("DA DOKKY IS REDDY");
- $.getJSON('api/flames')
- .then(function(data){
-     console.log(data);
-     //console.log("hey buddy boy boo");
-     data.forEach(function(e){
-         //console.log(e.lat);
-         //console.log(e.lng);
-         var shmoooop = new google.maps.Marker({
-            position: {lat: e.lat, lng: e.lng},
-            map: map
-        });
+
+var getFlames = function(){
+     $.getJSON('api/flames')
+     .then(function(data){
+         console.log(data);
+         //console.log("hey buddy boy boo");
+         data.forEach(function(e){
+             //console.log(e.lat);
+             //console.log(e.lng);
+             var shmoooop = new google.maps.Marker({
+                position: {lat: e.lat, lng: e.lng},
+                map: map
+            });
+         });
      });
- });
- //
-});
+}
 
 
 
