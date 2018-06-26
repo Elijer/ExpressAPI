@@ -9,6 +9,8 @@ is equivalent to the object that google.maps would return if using
 the googlemaps API directly from google.
 Therefore, googleMaps.maps will return an error */
 
+var newMap = require('./Maps/newMap');
+
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var map;
  
@@ -22,14 +24,15 @@ loadGoogleMapsApi().then(function (googleMaps) {
 });
 
 
+/*
 var newMap = function(gmapObject){
-  //create map
     var map = new gmapObject.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 8
   });
   return map;
 };
+*/
 
 
 var newMarker = function(){
