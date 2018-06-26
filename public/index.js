@@ -1,8 +1,8 @@
-/*global google*/ /* <-- this is just to get rid of google related errors cloud9 sees*/
+/*global googleMaps*/
 var $ = require('jquery');
 var rootURL = require('./rootURL');
 console.log("root URL is " + rootURL);
- 
+
 var loadGoogleMapsApi = require('load-google-maps-api-2');
 /*note that the googleMaps object this npm package returns
 is equivalent to the object that google.maps would return if using
@@ -18,22 +18,22 @@ var newMap = require('./Maps/newMap'),
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
-  getFlames();
+  console.log("googlemaps");
+  getFlames(googleMaps);
   addClickListener(map, rootURL, createFlame);
-  //newMarker(googleMaps);
 }).catch(function (err) {
   console.error(err);
 });
 
-var newMarker = function(){
+var newMarker = function(googleMaps){
   //create marker
-  var marker = new google.maps.Marker({
+  var marker = new googleMaps.Marker({
   position: {lat: -34.397, lng: 150.644},
   map: map
   });
 };
 
-var getFlames = function(){
+var getFlames = function(googleMaps){
      $.getJSON('api/flames')
      .then(function(data){
          console.log(data);
@@ -41,7 +41,7 @@ var getFlames = function(){
          data.forEach(function(e){
              //console.log(e.lat);
              //console.log(e.lng);
-             var shmoooop = new google.maps.Marker({
+             var shmoooop = new googleMaps.Marker({
                 position: {lat: e.lat, lng: e.lng},
                 map: map
             });
