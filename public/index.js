@@ -19,7 +19,6 @@ var newMap = require('./Maps/newMap'),
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
-  console.log("googlemaps");
   getFlames(googleMaps, map);
   addClickListener(map, rootURL, createFlame);
 }).catch(function (err) {
@@ -33,22 +32,6 @@ var newMarker = function(googleMaps){
   map: map
   });
 };
-
-var getFlames = function(googleMaps){
-     $.getJSON('api/flames')
-     .then(function(data){
-         console.log(data);
-         //console.log("hey buddy boy boo");
-         data.forEach(function(e){
-             //console.log(e.lat);
-             //console.log(e.lng);
-             var shmoooop = new googleMaps.Marker({
-                position: {lat: e.lat, lng: e.lng},
-                map: map
-            });
-         });
-     });
-}
 
 //const loadGoogleMapsApi = require('load-google-maps-api');
 //if not using it, remember to remove from npm
