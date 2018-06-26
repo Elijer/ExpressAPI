@@ -25,16 +25,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
   console.error(err);
 });
 
-var newMarker = function(googleMaps){
-  //create marker
-  var marker = new googleMaps.Marker({
-  position: {lat: -34.397, lng: 150.644},
-  map: map
-  });
-};
-
 //const loadGoogleMapsApi = require('load-google-maps-api');
 //if not using it, remember to remove from npm
 
 //var gmaps_key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
-//gmaps url
