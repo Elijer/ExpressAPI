@@ -15,12 +15,31 @@ var newMap = require('./Maps/newMap'),
     addClickListener = require('./Maps/addClickListener'),
     createFlame = require('./Maps/createFlame'),
     getFlames = require('./Maps/getFlames');
+    
+var newMarker = require('./Maps/newMarker');
 
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
   getFlames(googleMaps, map);
   addClickListener(map, rootURL, createFlame);
+  
+  map.addListener('zoom_changed', function() {
+      var someData = JSON.parse(window.localStorage.getItem('flames'));
+      console.log(someData);
+        var zoomLevel = map.zoom;
+        console.log(zoomLevel);
+        console.log(map.shmoooop);
+        
+        /*
+        map.clearMarkers();
+      
+        someData.forEach(function(e){
+        newMarker(googleMaps, e.lat, e.lng, map, 1);
+         });
+      */
+  });
+
 }).catch(function (err) {
   console.error(err);
 });
