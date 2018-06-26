@@ -11,8 +11,10 @@ Therefore, googleMaps.maps will return an error */
 
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var map;
-var newMap = require('./Maps/newMap');
-var addClickListener = require('./Maps/addClickListener')
+var newMap = require('./Maps/newMap'),
+    addClickListener = require('./Maps/addClickListener'),
+    createFlame = require('./Maps/createFlame');
+
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
@@ -29,16 +31,6 @@ var newMarker = function(){
   position: {lat: -34.397, lng: 150.644},
   map: map
   });
-};
-
-var createFlame = function(lat, lng, rootUrl){
-      $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
-      .then(function(newFlame){
-        console.log(newFlame);
-      })
-      .catch(function(err){
-        console.log(err);
-      });
 };
 
 var getFlames = function(){
