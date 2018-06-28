@@ -21,15 +21,23 @@ var newMarker = require('./Maps/newMarker');
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
-  getFlames(googleMaps, map);
-  addClickListener(map, rootURL, createFlame);
+  //getFlames(googleMaps, map);
+  //addClickListener(map, rootURL, createFlame);
+  
+  var marker = new google.maps.Marker({
+    position: {lat: -34.397, lng: 150.644},
+    map: map,
+    icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
+    scaledSize: new googleMaps.Size(30, 60),
+    title: 'Hello World!'}
+  });
   
   map.addListener('zoom_changed', function() {
       var someData = JSON.parse(window.localStorage.getItem('flames'));
       console.log(someData);
         var zoomLevel = map.zoom;
         console.log(zoomLevel);
-        console.log(map.shmoooop);
+        marker.icon.scaledSize = new googleMaps.Size(60, 120);
         
         /*
         map.clearMarkers();
