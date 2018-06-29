@@ -28,7 +28,10 @@ loadGoogleMapsApi().then(function (googleMaps) {
     position: {lat: -34.397, lng: 150.644},
     map: map,
     icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
-    scaledSize: new googleMaps.Size(30, 60),
+    //icon: {url: "https://media.giphy.com/media/xUydljLrnX00Dm59dH/giphy.gif",
+    size: new googleMaps.Size(300, 556),
+    anchor: new googleMaps.Point(15,45),
+    scaledSize: new googleMaps.Size(30, 55),
     title: 'Hello World!'}
   });
   
@@ -36,9 +39,9 @@ loadGoogleMapsApi().then(function (googleMaps) {
       var someData = JSON.parse(window.localStorage.getItem('flames'));
       console.log(someData);
         var zoomLevel = map.zoom;
+        var zoomVar = (zoomLevel - 7);
         console.log(zoomLevel);
-        marker.icon.scaledSize = new googleMaps.Size(60, 120);
-        
+        //marker.icon.scaledSize = new googleMaps.Size(60*zoomVar, 90*zoomVar);
         /*
         map.clearMarkers();
       
