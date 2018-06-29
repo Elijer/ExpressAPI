@@ -25,18 +25,22 @@ loadGoogleMapsApi().then(function (googleMaps) {
   //addClickListener(map, rootURL, createFlame);
   
   //if you can't see anything, try making exper a smaller number
-  var exper = 2048;
+  var exper = 128;
   var markerX = 30/exper;
   var markerY = 55/exper;
   var anchorX = 15/exper;
   var anchorY = 45/exper;
+  var zoomX, zoomY, zanchorX, zanchorY;
+  var upperLimit = 18;
+  var lowerLimit = 12;
+  
   var marker = new google.maps.Marker({
     position: {lat: -34.397, lng: 150.644},
     map: map,
     icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
     //icon: {url: "https://media.giphy.com/media/xUydljLrnX00Dm59dH/giphy.gif",
     size: new googleMaps.Size(300, 556),
-    anchor: new googleMaps.Point(anchorX,anchorY),
+    anchor: new googleMaps.Point(anchorX, anchorY),
     scaledSize: new googleMaps.Size(markerX, markerY),
     title: 'Hello World!'}
   });
@@ -45,8 +49,18 @@ loadGoogleMapsApi().then(function (googleMaps) {
       //var someData = JSON.parse(window.localStorage.getItem('flames'));
       //console.log(someData);
         var zoomLevel = map.zoom;
-        var scaleTool = Math.pow(2, ((zoomLevel-8)*-1));
-        console.log("Zoom level is: " + zoomLevel + ", While scaleTool is: " + scaleTool);
+        console.log(zoomLevel);
+        if (zoomLevel >= upperLimit){
+          var scaleTool = Math.pow(2, ((upperLimit-8)*-1));
+        } else if (zoomLevel <= lowerLimit) {
+          var scaleTool = Math.pow(2, ((lowerLimit-8)*-1));
+        } else {
+          var scaleTool = Math.pow(2, ((zoomLevel-8)*-1));
+        }
+        //console.log("Zoom level is: " + zoomLevel + ", While scaleTool is: " + scaleTool);
+        marker.icon.scaledSize = new googleMaps.Size(markerX/scaleTool, markerY/scaleTool);
+        marker.icon.anchor = new googleMaps.Point(anchorX/scaleTool, anchorY/scaleTool);
+        
         
         
         /*
