@@ -45,7 +45,11 @@ loadGoogleMapsApi().then(function (googleMaps) {
       //var someData = JSON.parse(window.localStorage.getItem('flames'));
       //console.log(someData);
         var zoomLevel = map.zoom;
-        console.log(zoomLevel);
+        var scaleTool = Math.pow(2, ((zoomLevel-8)*-1));
+        console.log("Zoom level is: " + zoomLevel + ", While scaleTool is: " + scaleTool);
+        
+        
+        /*
         if (zoomLevel == 8){
           marker.icon.scaledSize = new googleMaps.Size(markerX, markerY);
           marker.icon.anchor = new googleMaps.Point(anchorX, anchorY);
@@ -98,6 +102,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
           marker.icon.scaledSize = new googleMaps.Size(markerX*16384, markerY*16384);
           marker.icon.anchor = new googleMaps.Point(anchorX*16384, anchorY*16384);
         }
+        */
         
         //var zoomVar = (zoomLevel - 7);
         //marker.icon.scaledSize = new googleMaps.Size(60, 110);
@@ -107,8 +112,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
       
         someData.forEach(function(e){
         newMarker(googleMaps, e.lat, e.lng, map, 1);
-         });
-      */
+         });*/
   });
 
 }).catch(function (err) {
