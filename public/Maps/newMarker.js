@@ -35,7 +35,7 @@ var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id, masterA
         method: 'DELETE',
         url: rootURL + '/api/flames/' + id
       })
-
+      console.log("marker with id of " + id + " was deleted")
     });
 }
 
