@@ -21,8 +21,9 @@ var newMarker = require('./Maps/newMarker');
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
-  getFlames(googleMaps, map);
-  //addClickListener(map, rootURL, createFlame);
+  var zoomLevel = map.zoom;
+  getFlames(googleMaps, map, zoomLevel);
+  addClickListener(map, rootURL, createFlame);
 
   //if you can't see anything, try making exper a smaller number
   var exper = 128;
@@ -46,10 +47,9 @@ loadGoogleMapsApi().then(function (googleMaps) {
   });
 
   map.addListener('zoom_changed', function() {
-      getFlames(googleMaps, map);
-      //var someData = JSON.parse(window.localStorage.getItem('flames'));
-      //console.log(someData);
         var zoomLevel = map.zoom;
+        getFlames(googleMaps, map, zoomLevel);
+        //getFlames(googleMaps, map);
         console.log(zoomLevel);
         if (zoomLevel >= upperLimit){
           var scaleTool = Math.pow(2, ((upperLimit-8)*-1));
@@ -67,3 +67,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
 });
 
 //var gmaps_key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
+
+  //how to store stuff in the browser
+//var someData = JSON.parse(window.localStorage.getItem('flames'));
+//console.log(someData);
