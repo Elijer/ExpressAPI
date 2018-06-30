@@ -4,7 +4,8 @@
   "description": ">## Creating an Nginx, Node.js, Express.js API w/ MongoDB, for production, on  (*gasp*) Digital Ocean!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fire": "git push origin flames"
   },
   "author": "",
   "license": "ISC",
