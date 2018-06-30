@@ -1,7 +1,7 @@
 var $ = require('jquery');
 var newMarker = require('./newMarker');
 
-var getFlames = function(googleMaps, targetMap, zoomLevel){
+var getFlames = function(googleMaps, targetMap, zoomLevel, masterArray){
     console.log("tryna something");
      $.getJSON('api/flames')
      .then(function(data){
@@ -11,12 +11,8 @@ var getFlames = function(googleMaps, targetMap, zoomLevel){
        for (var i = 0; i < data.length; i++){
          var current = data[i];
          //console.log(data[i]);
-         newMarker(googleMaps, current.lat, current.lng, targetMap, zoomLevel, current._id);
+         newMarker(googleMaps, current.lat, current.lng, targetMap, zoomLevel, current._id, masterArray, i);
        };
-         /*data.forEach(function(e){
-           console.log(e);
-             //newMarker(googleMaps, e.lat, e.lng, targetMap, 1);
-         });*/
      });
 
 };

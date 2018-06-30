@@ -21,8 +21,10 @@ var newMarker = require('./Maps/newMarker');
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
+  masterArray = [];
   var zoomLevel = map.zoom;
-  getFlames(googleMaps, map, zoomLevel);
+  getFlames(googleMaps, map, zoomLevel, masterArray);
+  console.log(masterArray);
   addClickListener(map, rootURL, createFlame);
 
   //if you can't see anything, try making exper a smaller number
@@ -47,6 +49,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
   });
 
   map.addListener('zoom_changed', function() {
+        console.log(masterArray);
         var zoomLevel = map.zoom;
         //getFlames(googleMaps, map);
         console.log(zoomLevel);
@@ -59,6 +62,11 @@ loadGoogleMapsApi().then(function (googleMaps) {
         }
         marker.icon.scaledSize = new googleMaps.Size(markerX/scaleTool, markerY/scaleTool);
         marker.icon.anchor = new googleMaps.Point(anchorX/scaleTool, anchorY/scaleTool);
+
+        for (var i = 0; i < masterArray.length; i++ ) {
+          masterArray[i].icon.scaledSize = new googleMaps.Size(markerX/scaleTool, markerY/scaleTool);
+          masterArray[i].icon.anchor = new googleMaps.Point(anchorX/scaleTool, anchorY/scaleTool);
+        }
   });
 
 }).catch(function (err) {
