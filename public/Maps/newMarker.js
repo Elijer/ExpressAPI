@@ -3,6 +3,9 @@ var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel){
         position: {lat: lat, lng: lng},
         map: targetMap,
     });
+    shmoooop.addListener('click', function() {
+      console.log("ooh oohohoh you got me");
+    });
 }
 
 module.exports = newMarker;
