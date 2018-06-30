@@ -48,7 +48,6 @@ loadGoogleMapsApi().then(function (googleMaps) {
 
   map.addListener('zoom_changed', function() {
         var zoomLevel = map.zoom;
-        getFlames(googleMaps, map, zoomLevel);
         //getFlames(googleMaps, map);
         console.log(zoomLevel);
         if (zoomLevel >= upperLimit){
