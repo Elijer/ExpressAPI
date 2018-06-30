@@ -1,10 +1,19 @@
-var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel){
+var $ = require('jquery');
+var rootURL = require('../rootURL');
+
+var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id){
     var shmoooop = new googleMaps.Marker({
         position: {lat: lat, lng: lng},
         map: targetMap,
+        artichokes: id
     });
     shmoooop.addListener('click', function() {
-      console.log("ooh oohohoh you got me");
+      console.log(shmoooop.artichokes);
+      $.ajax({
+        method: 'DELETE',
+        url: rootURL + '/api/flames/' + shmoooop.artichokes
+      })
+
     });
 }
 

@@ -11,7 +11,7 @@ var getFlames = function(googleMaps, targetMap, zoomLevel){
        for (var i = 0; i < data.length; i++){
          var current = data[i];
          //console.log(data[i]);
-         newMarker(googleMaps, current.lat, current.lng, targetMap, zoomLevel);
+         newMarker(googleMaps, current.lat, current.lng, targetMap, zoomLevel, current._id);
        };
          /*data.forEach(function(e){
            console.log(e);
