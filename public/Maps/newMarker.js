@@ -2,21 +2,7 @@ var $ = require('jquery');
 var rootURL = require('../rootURL');
 
 var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id, masterArray, index){
-    /*masterArray[index] = new googleMaps.Marker({
-        position: {lat: lat, lng: lng},
-        map: targetMap,
-        iterationID: id
-    });*/
-    /*
-    var exper = 128;
-    var markerX = 30/exper;
-    var markerY = 55/exper;
-    var anchorX = 15/exper;
-    var anchorY = 45/exper;
-    var zoomX, zoomY, zanchorX, zanchorY;
-    var upperLimit = 18;
-    var lowerLimit = 12;
-    */
+
     masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},
       map: targetMap,
