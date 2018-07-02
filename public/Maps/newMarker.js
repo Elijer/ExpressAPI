@@ -15,7 +15,6 @@ var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id, masterA
       iterationID: id
     });
 
-
     masterArray[index].addListener('click', function() {
       $.ajax({
         method: 'DELETE',
