@@ -7,16 +7,14 @@ var loadGoogleMapsApi = require('load-google-maps-api-2');
 
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var newMap = require('./Maps/newMap'),
-    //addClickListener = require('./Maps/addClickListener'),
-    createFlame = require('./Maps/createFlame'),
+    addClickListener = require('./Maps/addClickListener'),
     getFlames = require('./Maps/getFlames'),
-    newMarker = require('./Maps/newMarker'),
-    scaleHandler = require('./Maps/scaleHandler')
+    newMarker = require('./Maps/newMarker');
 
 loadGoogleMapsApi().then(function (googleMaps) {
 //when using google.maps objects, instead just use googleMaps with this package.
   map = newMap(googleMaps);
-  //addClickListener(map, rootURL, createFlame);
+  addClickListener(map, rootURL);
 
   masterArray = [];
   var zoomLevel = map.zoom;
