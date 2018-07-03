@@ -2,7 +2,7 @@ var makeFuego = require('./markerTypes/fuego');
 
 var scalingHandler = function(gMaps, map, array){
 
-  map.addListener('zoom_changed', function() {
+  map.addListener('zoom_changed', function(e) {
 
     var zoomLvl = map.zoom;
     var upperLimit = 18;
@@ -17,7 +17,7 @@ var scalingHandler = function(gMaps, map, array){
       var scaleTool = Math.pow(2, ((zoomLvl-8)*-1));
     };
 
-    var fuego = makeFuego(gMaps, scaleTool, 128);
+    var fuego = makeFuego(gMaps, scaleTool, 32);
 
     //iterator
     for (var i = 0; i < masterArray.length; i++ ) {
