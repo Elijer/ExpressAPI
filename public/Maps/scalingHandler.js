@@ -18,16 +18,16 @@ var scalingHandler = function(gMaps, map, array){
       var scaleTool = Math.pow(2, ((zoomLvl-8)*-1));
     };
 
-    var exper = 128;
-    var markerX = 30/exper;
-    var markerY = 55/exper;
-    var anchorX = 15/exper;
-    var anchorY = 45/exper;
+    var calibration = 128*scaleTool;
+    var markerX = 30/calibration;
+    var markerY = 55/calibration;
+    var anchorX = 15/calibration;
+    var anchorY = 45/calibration;
 
     fuego = {
-      size: new gMaps.Size(markerX/scaleTool, markerY/scaleTool),
-      scaledSize: new gMaps.Size(markerX/scaleTool, markerY/scaleTool),
-      anchor: new gMaps.Point(anchorX/scaleTool, anchorY/scaleTool)
+      size: new gMaps.Size(markerX, markerY),
+      scaledSize: new gMaps.Size(markerX, markerY),
+      anchor: new gMaps.Point(anchorX, anchorY)
     }
 
     //iterator
