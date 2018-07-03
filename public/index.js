@@ -3,23 +3,23 @@ var $ = require('jquery');
 var rootURL = require('./rootURL');
 console.log("root URL is " + rootURL);
 
-var loadGoogleMapsApi = require('load-google-maps-api-2');
+var loadGoogleMapsApi = require('load-google-maps-api-2');//use googleMaps, not google.maps w/ this module
 
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var newMap = require('./Maps/newMap'),
     addClickListener = require('./Maps/addClickListener'),
     getFlames = require('./Maps/getFlames'),
-    newMarker = require('./Maps/newMarker');
+    scalingHandler = require('./Maps/scalingHandler');
 
 loadGoogleMapsApi().then(function (googleMaps) {
-//when using google.maps objects, instead just use googleMaps with this package.
   map = newMap(googleMaps);
   addClickListener(map, rootURL);
 
   masterArray = [];
   var zoomLevel = map.zoom;
   getFlames(googleMaps, map, zoomLevel, masterArray);
-  console.log(masterArray);
+
+  scalingHandler(googleMaps, map, zoomLevel, masterArray);
 
   var exper = 128;
   var markerX = 30/exper;
