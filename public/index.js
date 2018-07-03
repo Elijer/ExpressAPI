@@ -19,7 +19,9 @@ loadGoogleMapsApi().then(function (googleMaps) {
   var zoomLevel = map.zoom;
   getFlames(googleMaps, map, masterArray);
 
-  scalingHandler(googleMaps, map, masterArray);
+  map.addListener('zoom_changed', function(e) {
+    scalingHandler(googleMaps, map, masterArray);
+  });
 
 }).catch(function (err) {
   console.error(err);
