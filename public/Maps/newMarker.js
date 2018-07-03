@@ -8,7 +8,7 @@ var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id, masterA
       map: targetMap,
       icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
       //icon: {url: "https://media.giphy.com/media/xUydljLrnX00Dm59dH/giphy.gif",
-      size: new googleMaps.Size(300, 556),
+      size: new googleMaps.Size(30, 55),
       anchor: new googleMaps.Point(15, 45),
       scaledSize: new googleMaps.Size(30, 55),
       title: 'Hello World!'},

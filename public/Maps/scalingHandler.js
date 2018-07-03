@@ -1,9 +1,7 @@
-var scalingHandler = function(gMaps, map, zoomLvl, array){
-  console.log(gMaps);
-  console.log(map);
-  console.log(zoomLvl);
-  console.log(array);
-  /*
+var scalingHandler = function(gMaps, map, array){
+  var zoomLvl = map.zoom;
+
+
   var exper = 128;
   var markerX = 30/exper;
   var markerY = 55/exper;
@@ -29,11 +27,11 @@ var scalingHandler = function(gMaps, map, zoomLvl, array){
         //scaleHandler(masterArray, googleMaps, scaleTool);
 
         for (var i = 0; i < masterArray.length; i++ ) {
-          masterArray[i].icon.scaledSize = new googleMaps.Size(markerX/scaleTool, markerY/scaleTool);
-          masterArray[i].icon.anchor = new googleMaps.Point(anchorX/scaleTool, anchorY/scaleTool);
+          masterArray[i].icon.size = new gMaps.Size(markerX/scaleTool, markerY/scaleTool);
+          masterArray[i].icon.scaledSize = new gMaps.Size(markerX/scaleTool, markerY/scaleTool);
+          masterArray[i].icon.anchor = new gMaps.Point(anchorX/scaleTool, anchorY/scaleTool);
         }
   });
-  */
 };
 
 module.exports = scalingHandler;
