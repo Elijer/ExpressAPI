@@ -20,7 +20,11 @@ loadGoogleMapsApi().then(function (googleMaps) {
   getFlames(googleMaps, map, masterArray);
 
   map.addListener('zoom_changed', function(e) {
-    scalingHandler(googleMaps, map, masterArray);
+    var markerInstance;
+    for (var i = 0; i < masterArray.length; i++ ) {
+      markerInstance = masterArray[i];
+      scalingHandler(googleMaps, map, markerInstance);
+    }
   });
 
 }).catch(function (err) {

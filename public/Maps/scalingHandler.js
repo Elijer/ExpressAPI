@@ -1,6 +1,6 @@
 var makeFuego = require('./markerTypes/fuego');
 
-var scalingHandler = function(gMaps, map, array){
+var scalingHandler = function(gMaps, map, markerInstance){
   var zoomLvl = map.zoom;
   var upperLimit = 18;
   var lowerLimit = 12;
@@ -17,12 +17,10 @@ var scalingHandler = function(gMaps, map, array){
   var fuego = makeFuego(gMaps, scaleTool, 32);
 
   //iterator
-  for (var i = 0; i < masterArray.length; i++ ) {
-    var current = array[i].icon;
+    var current = markerInstance.icon;
     current.size = fuego.size;
     current.scaledSize = fuego.size;
     current.anchor = fuego.anchor;
-  }
 };
 
 module.exports = scalingHandler;
