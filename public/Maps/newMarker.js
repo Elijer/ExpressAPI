@@ -2,7 +2,7 @@ var $ = require('jquery');
 var rootURL = require('../rootURL');
 var scalingHandler = require('./scalingHandler');
 
-var newMarker = function(googleMaps, lat, lng, targetMap, zoomLevel, id, masterArray, index){
+var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index){
 
     masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},

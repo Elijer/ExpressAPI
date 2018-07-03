@@ -1,7 +1,6 @@
 /*global googleMaps*/
 var $ = require('jquery');
 var rootURL = require('./rootURL');
-console.log("root URL is " + rootURL);
 
 var loadGoogleMapsApi = require('load-google-maps-api-2');//use googleMaps, not google.maps w/ this module
 
@@ -14,7 +13,7 @@ var newMap = require('./Maps/newMap'),
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
   masterArray = [];
-  addClickListener(map, rootURL, masterArray);
+  addClickListener(googleMaps, map, rootURL, masterArray);
 
   getFlames(googleMaps, map, masterArray);
 

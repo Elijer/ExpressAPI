@@ -1,16 +1,16 @@
 var createFlame = require('./createFlame');
 
-var addClickListener = function(aMap, rootURL, masterArray){
-    console.log(masterArray);
+var addClickListener = function(gMaps, aMap, rootURL, array){
     aMap.addListener('click', function(e) {
     var latLng = e.latLng;
     var lat = latLng.lat();
     var lng = latLng.lng();
 
     //no modal
-    //createFlame(lat, lng, rootURL);
+    createFlame(gMaps, aMap, lat, lng, rootURL, array);
 
     //modal question
+    /*
     if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
         console.log(lng);
         console.log(lat);
@@ -18,6 +18,7 @@ var addClickListener = function(aMap, rootURL, masterArray){
     } else {
         console.log("cancelled logging of coords");
     }
+    */
   });
 }
 
