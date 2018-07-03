@@ -7,19 +7,21 @@ var loadGoogleMapsApi = require('load-google-maps-api-2');
 
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 var newMap = require('./Maps/newMap'),
-    addClickListener = require('./Maps/addClickListener'),
+    //addClickListener = require('./Maps/addClickListener'),
     createFlame = require('./Maps/createFlame'),
     getFlames = require('./Maps/getFlames'),
-    newMarker = require('./Maps/newMarker');
+    newMarker = require('./Maps/newMarker'),
+    scaleHandler = require('./Maps/scaleHandler')
 
 loadGoogleMapsApi().then(function (googleMaps) {
 //when using google.maps objects, instead just use googleMaps with this package.
   map = newMap(googleMaps);
+  //addClickListener(map, rootURL, createFlame);
+
   masterArray = [];
   var zoomLevel = map.zoom;
   getFlames(googleMaps, map, zoomLevel, masterArray);
   console.log(masterArray);
-  addClickListener(map, rootURL, createFlame);
 
   var exper = 128;
   var markerX = 30/exper;
@@ -31,7 +33,7 @@ loadGoogleMapsApi().then(function (googleMaps) {
   var lowerLimit = 12;
 
   map.addListener('zoom_changed', function() {
-        console.log(masterArray);
+        //console.log(masterArray);
         var zoomLevel = map.zoom;
         //getFlames(googleMaps, map);
         console.log(zoomLevel);
@@ -42,6 +44,8 @@ loadGoogleMapsApi().then(function (googleMaps) {
         } else {
           var scaleTool = Math.pow(2, ((zoomLevel-8)*-1));
         }
+
+        //scaleHandler(masterArray, googleMaps, scaleTool);
 
         for (var i = 0; i < masterArray.length; i++ ) {
           masterArray[i].icon.scaledSize = new googleMaps.Size(markerX/scaleTool, markerY/scaleTool);
