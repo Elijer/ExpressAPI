@@ -13,10 +13,9 @@ var newMap = require('./Maps/newMap'),
 
 loadGoogleMapsApi().then(function (googleMaps) {
   map = newMap(googleMaps);
-  addClickListener(map, rootURL);
-
   masterArray = [];
-  var zoomLevel = map.zoom;
+  addClickListener(map, rootURL, masterArray);
+
   getFlames(googleMaps, map, masterArray);
 
   map.addListener('zoom_changed', function(e) {

@@ -2,8 +2,8 @@ var darkStyle = require('./mapStyles/dark');
 
 var newMap = function(gmapObject){
     var map = new gmapObject.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 8,
+    center: {lat: 38.875854, lng: -77.0981069},
+    zoom: 14,
     styles: darkStyle
   });
   return map;
