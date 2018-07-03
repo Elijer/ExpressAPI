@@ -21,7 +21,7 @@ var addClickListener = function(gMaps, aMap, rootURL, array){
     */
   });
 
-    aMap.addListener('mapLocation', function(e) {
+    aMap.addListener('mousedown', function(e) {
     var latLng = e.latLng;
     var lat = latLng.lat();
     var lng = latLng.lng();
