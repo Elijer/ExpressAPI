@@ -1,19 +1,17 @@
-/*var calibration = 128;
-var markerX = 30/calibration;
-var markerY = 55/calibration;
-var anchorX = 15/calibration;
-var anchorY = 45/calibration;
-var zoomX, zoomY, zanchorX, zanchorY;
-var upperLimit = 18;
-var lowerLimit = 12;
+var makeFuego = function(gMaps, scaleTool, calibrate){
 
-var calibration = 128;
+  var scale = calibrate*scaleTool,
+      markerX = 30/scale,
+      markerY = 55/scale,
+      anchorX = 15/scale,
+      anchorY = 45/scale;
 
-var fuego = function(gMaps){
-  size: new gMaps.Size(30/calibration, markerY/scaleTool),
-  scaledSize: 10,
-  anchor: 10
-};
+  fuego = {
+    size: new gMaps.Size(markerX, markerY),
+    scaledSize: new gMaps.Size(markerX, markerY),
+    anchor: new gMaps.Point(anchorX, anchorY)
+  };
+  return fuego;
+}
 
-module.exports = fuego;
-*/
+module.exports = makeFuego;
