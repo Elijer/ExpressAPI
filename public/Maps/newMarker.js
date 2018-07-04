@@ -15,12 +15,18 @@ var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index
     scalingHandler(googleMaps, map, masterArray[index]);
 
     masterArray[index].addListener('click', function() {
+      console.log(id)
+    });
+
+    //Delete on Click
+    /*
+    masterArray[index].addListener('click', function() {
       $.ajax({
         method: 'DELETE',
         url: rootURL + '/api/flames/' + id
       })
       console.log("marker with id of " + id + " was deleted")
-    });
+    });*/
 }
 
 module.exports = newMarker;
