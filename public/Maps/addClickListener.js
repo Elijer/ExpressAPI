@@ -1,13 +1,13 @@
 var createFlame = require('./createFlame');
 
-var addClickListener = function(gMaps, aMap, rootURL, array){
-    aMap.addListener('click', function(e) {
+var addClickListener = function(gMaps, map, rootURL, array){
+    map.addListener('click', function(e) {
     var latLng = e.latLng;
     var lat = latLng.lat();
     var lng = latLng.lng();
 
     //no modal
-    createFlame(gMaps, aMap, lat, lng, rootURL, array);
+    createFlame(gMaps, map, lat, lng, rootURL);
 
     //modal question
     /*

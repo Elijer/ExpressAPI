@@ -2,19 +2,24 @@ var $ = require('jquery');
 var rootURL = require('../rootURL');
 var scalingHandler = require('./scalingHandler');
 
-var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index){
 
-    masterArray[index] = new googleMaps.Marker({
+var newMarker = function(googleMaps, lat, lng, map, id, index){
+    //console.log(map.masterArray);
+    map.masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},
-      map: targetMap,
+      map: map,
       icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
       title: 'Hello World!'},
       iterationID: id
     });
 
-    scalingHandler(googleMaps, map, masterArray[index]);
+    //what happens if I do current = map.masterArray[]index
+    //and then scalingHandler(googleMaps, map, current); ?
+    //it is clearer and less data intensive
+    scalingHandler(googleMaps, map, index);
 
-    masterArray[index].addListener('click', function() {
+
+    map.masterArray[index].addListener('click', function() {
       console.log(id)
     });
 
