@@ -3,7 +3,7 @@ var newMarker = require('./newMarker');
 doSetTimeout = function(googleMaps, lat, lng, targetMap, id, masterArray, i) {
   setTimeout(function() {
     newMarker(googleMaps, lat, lng, targetMap, id, masterArray, i);
-  }, i*100);
+  }, i*20);
 };
 
 var getFlames = function(googleMaps, targetMap, masterArray){
