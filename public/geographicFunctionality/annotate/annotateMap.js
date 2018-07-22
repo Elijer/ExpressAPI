@@ -1,4 +1,4 @@
-var rootURL             = require('../rootURL');
+var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 
 var annotateMap = function(googleMaps, map){
@@ -54,8 +54,7 @@ var annotateMap = function(googleMaps, map){
         position: {lat: lat, lng: lng},
         map: targetMap,
         //icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
-        icon: {url: "./geographicFunctionality/gifs/fireSmall.gif",
-        //icon: {url: "./Maps/gifs/tinyFlame.gif",
+        icon: {url: "./geographicFunctionality/annotate/gifs/fireSmall.gif",
         title: 'Hello World!'},
         optimized: false,
         iterationID: id
