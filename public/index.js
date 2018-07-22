@@ -31,8 +31,26 @@ loadGoogleMapsApi().then(function (googleMaps) {
 
   masterArray = [];
 
-  //addClickLister
-  var createFlame = require('./Maps/createFlame');
+
+//createFlame
+//var createFlame = require('./Maps/createFlame');
+var newMarker = require('./Maps/newMarker');
+var createFlame = function(gMaps, map, lat, lng, rootUrl, array){
+      $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
+      .then(function(newFlame){
+        console.log(newFlame);
+        var newID = newFlame._id;
+        var position = array.length;
+        newMarker(gMaps, lat, lng, map, newID, array, position);
+      })
+      .catch(function(err){
+        console.log(err);
+      });
+};
+
+
+
+//addClickLister
   var addClickListener = function(gMaps, aMap, rootURL, array){
       aMap.addListener('click', function(e) {
       var latLng = e.latLng;
