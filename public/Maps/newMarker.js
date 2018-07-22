@@ -8,9 +8,10 @@ var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index
       position: {lat: lat, lng: lng},
       map: targetMap,
       //icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
-      icon: {url: "../flame.gif",
+      icon: {url: "https://media.giphy.com/media/l2R0aKwejYr8ycKAg/giphy.gif",
       title: 'Hello World!'},
-      iterationID: id
+      iterationID: id,
+      optimized: false
     });
 
     scalingHandler(googleMaps, map, masterArray[index]);
