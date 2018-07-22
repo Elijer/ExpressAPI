@@ -1,10 +1,11 @@
 var $                   = require('jquery'),
     rootURL             = require('../rootURL'),
     loadGoogleMapsApi   = require('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
-    mapConfig           = require('./mapConfig'),
-    andThenAnnotateIt     = require('./annotateMap');
+    mapConfig           = require('./mapConfig');
 
-buildMap = function(){
+loadGoogleMapsApi.key     = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
+
+buildMap = function(andThen){
   loadGoogleMapsApi().then(function (googleMaps) {
     var darkStyle = require('./mapStyles/dark');
     var newMap = function(googleMaps){
@@ -12,7 +13,7 @@ buildMap = function(){
       return map;
     };
     map = newMap(googleMaps);
-    andThenAnnotateIt(googleMaps, map);
+    andThen(googleMaps, map);
 
   }).catch(function (err) {
     console.error(err);
