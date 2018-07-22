@@ -73,7 +73,7 @@ geo = function(){
         position: {lat: lat, lng: lng},
         map: targetMap,
         //icon: {url: "https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif",
-        icon: {url: "./Maps/gifs/fireSmall.gif",
+        icon: {url: "./geographicFunctionality/gifs/fireSmall.gif",
         //icon: {url: "./Maps/gifs/tinyFlame.gif",
         title: 'Hello World!'},
         optimized: false,
