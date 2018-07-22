@@ -1,22 +1,15 @@
 var $                   = require('jquery'),
     rootURL             = require('../rootURL'),
-    loadGoogleMapsApi   = require('load-google-maps-api-2');//use googleMaps, not google.maps w/ this module
+    loadGoogleMapsApi   = require('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
+    mapConfig           = require('./mapConfig');
 
 loadGoogleMapsApi.key   = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
-geo = function(){
+buildMap = function(){
   loadGoogleMapsApi().then(function (googleMaps) {
-    //newMap.js
     var darkStyle = require('./mapStyles/dark');
-    var newMap = function(gmapObject){
-        var map = new gmapObject.Map(document.getElementById('map'), {
-        center: {lat: 38.875854, lng: -77.0981069},
-        zoom: 14,
-        styles: darkStyle,
-        backgroundColor: "#212121",
-        fullscreenControl: false,
-        streetViewControl: false
-      });
+    var newMap = function(googleMaps){
+        var map = new googleMaps.Map(document.getElementById('map'), mapConfig);
       return map;
     };
     map = newMap(googleMaps);
@@ -167,4 +160,4 @@ geo = function(){
 
 }
 
-module.exports = geo;
+module.exports = buildMap;
