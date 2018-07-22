@@ -9,7 +9,9 @@ var express = require('express'),
     bodyParser = require('body-parser');
 var todoRoutes = require('./API_Todo/routes/todos');
 var flameRoutes = require('./API_Flame/routes/flames');
+var cors = require('cors');
 
+app.use(cors({origin: port}));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 
