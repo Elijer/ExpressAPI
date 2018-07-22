@@ -2,6 +2,15 @@
 var $ = require('jquery');
 var rootURL = require('./rootURL');
 
+
+
+if ("geolocation" in navigator) {
+  console.log("geo yes");
+} else {
+  console.log("geo no");
+}
+
+
 var loadGoogleMapsApi = require('load-google-maps-api-2');//use googleMaps, not google.maps w/ this module
 
 loadGoogleMapsApi.key = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
