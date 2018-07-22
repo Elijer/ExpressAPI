@@ -4,7 +4,11 @@ var newMap = function(gmapObject){
     var map = new gmapObject.Map(document.getElementById('map'), {
     center: {lat: 38.875854, lng: -77.0981069},
     zoom: 14,
-    styles: darkStyle
+    styles: darkStyle,
+    backgroundColor: "#212121",
+    fullscreenControl: false,
+    streetViewControl: false
+
   });
   return map;
 };
