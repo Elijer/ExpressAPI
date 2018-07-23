@@ -1,3 +1,6 @@
+var $                   = require('jquery');
+var newMarker           = require('./newMarker');
+
 var createFlame = function(googleMaps, map, lat, lng, rootUrl, array){
       $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
       .then(function(newFlame){
