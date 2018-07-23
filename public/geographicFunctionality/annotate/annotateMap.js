@@ -12,9 +12,8 @@ var annotateMap = function(googleMaps, map){
   masterArray = [];
   $.getJSON('api/flames')
   .then(function(data){
-    renderFlames(data);
+    renderFlames(googleMaps, data);
   });
-  getFlames(googleMaps, map, masterArray);
 
   addClickListener(googleMaps, map, rootURL, masterArray);
 
