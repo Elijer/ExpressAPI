@@ -12,6 +12,7 @@ buildMap = function(andThen){
       var map = new googleMaps.Map(document.getElementById('map'), mapConfig);
       return map;
     };
+    //Create map object and then pass it into AndThenAnnotateIt callback function
     map = newMap(googleMaps);
     andThen(googleMaps, map);
 
@@ -22,3 +23,12 @@ buildMap = function(andThen){
 };
 
 module.exports = buildMap;
+
+/*
+
+            |------- buildMap -------
+geo -------+
+            |------- annotateMap ----
+
+
+*/
