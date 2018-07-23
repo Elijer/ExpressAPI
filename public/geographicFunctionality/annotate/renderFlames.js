@@ -6,15 +6,11 @@ var newMarker           = require('./newMarker');
   }, i*20);
 };*/
 
-
 var renderFlames = function(googleMaps, data){
-  //console.log(data);
+  console.log(data);
   for (var i = 0; i < data.length; i++){
-    var current = data[i],
-    lat = current.lat,
-    lng = current.lng,
-    id = current._id;
-    newMarker(googleMaps, lat, lng, map, id, masterArray, i);
+    var flame = data[i];
+    newMarker(googleMaps, flame.lat, flame.lng, map, flame.id, masterArray, i);
     //doSetTimeout(googleMaps, lat, lng, map, id, masterArray, i);
   };
 };
