@@ -1,5 +1,5 @@
-var renderFlames = function(){
-  console.log("flames are gettin rendered");
+var renderFlames = function(data){
+  console.log(data);
 };
 
 module.exports = renderFlames;

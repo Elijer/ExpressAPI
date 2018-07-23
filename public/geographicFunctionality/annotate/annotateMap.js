@@ -12,7 +12,7 @@ var annotateMap = function(googleMaps, map){
   masterArray = [];
   $.getJSON('api/flames')
   .then(function(data){
-    renderFlames();
+    renderFlames(data);
   });
   getFlames(googleMaps, map, masterArray);
 
