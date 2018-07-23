@@ -14,7 +14,8 @@ buildMap = function(andThen){
     };
     //Create map object and then pass it into AndThenAnnotateIt callback function
     map = newMap(googleMaps);
-    andThen(googleMaps, map);
+    masterArray = [];
+    andThen(googleMaps, map, masterArray);
 
   }).catch(function (err) {
     console.error(err);

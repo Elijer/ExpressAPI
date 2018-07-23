@@ -8,11 +8,12 @@ var addClickListener    = require('./addClickListener');
 var getFlames           = require('./getFlames');
 var renderFlames        = require('./renderFlames');
 
-var annotateMap = function(googleMaps, map){
-  masterArray = [];
+var annotateMap = function(googleMaps, map, masterArray){
   $.getJSON('api/flames')
   .then(function(data){
+
     renderFlames(googleMaps, data);
+
   });
 
   addClickListener(googleMaps, map, rootURL, masterArray);
