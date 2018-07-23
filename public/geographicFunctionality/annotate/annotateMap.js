@@ -18,19 +18,6 @@ var annotateMap = function(googleMaps, map){
       }, i*20);
     };
 
-    var getFlames = function(googleMaps, targetMap, masterArray){
-      var zoomLvl = targetMap.zoom;
-       $.getJSON('api/flames')
-       .then(function(data){
-         for (var i = 0; i < data.length; i++){
-           var current = data[i],
-           lat = current.lat,
-           lng = current.lng,
-           id = current._id;
-           doSetTimeout(googleMaps, lat, lng, targetMap, id, masterArray, i);
-         };
-       });
-    };
     getFlames(googleMaps, map, masterArray);
 
     map.addListener('zoom_changed', function(e) {
