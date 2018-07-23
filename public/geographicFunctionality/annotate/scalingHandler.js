@@ -1,4 +1,3 @@
-var scalingHandler      = require('./scalingHandler');
 var makeFuego           = require('./fuego');
 
 var scalingHandler = function(googleMaps, map, markerInstance){

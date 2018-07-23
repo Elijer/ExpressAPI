@@ -8,21 +8,6 @@ var newMarker           = require('./newMarker');
 var annotateMap = function(googleMaps, map){
   masterArray = [];
 
-  //createFlame
-  //var createFlame = require('./Maps/createFlame');
-  var createFlame = function(googleMaps, map, lat, lng, rootUrl, array){
-        $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
-        .then(function(newFlame){
-          console.log(newFlame);
-          var newID = newFlame._id;
-          var position = array.length;
-          newMarker(googleMaps, lat, lng, map, newID, array, position);
-        })
-        .catch(function(err){
-          console.log(err);
-        });
-  };
-
 
   //addClickLister
     var addClickListener = function(googleMaps, aMap, rootURL, array){
