@@ -1,5 +1,4 @@
 var scalingHandler      = require('./scalingHandler');
-var newMarker           = require('./newMarker');
 
 var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index){
     masterArray[index] = new googleMaps.Marker({
