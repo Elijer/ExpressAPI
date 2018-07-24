@@ -1,7 +1,7 @@
 var $                   = require('jquery');
 var newMarker           = require('./common/newMarker');
 
-var addClickListener = function(googleMaps, rootURL){
+var mapClick = function(googleMaps, rootURL){
     map.addListener('click', function(e) {
     //google maps stores click lat & lng in a weird way;
     var lat = e.latLng.lat();
@@ -35,4 +35,4 @@ var addClickListener = function(googleMaps, rootURL){
   });
 };
 
-module.exports = addClickListener;
+module.exports = mapClick;
