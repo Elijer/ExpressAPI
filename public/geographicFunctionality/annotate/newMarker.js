@@ -1,26 +1,24 @@
 var scalingHandler      = require('./scalingHandler');
+var markerOnClick       = require('./markerOnClick');
 var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 
-var newMarker = function(googleMaps, lat, lng, targetMap, id, masterArray, index){
+var gif_FLAME = "./geographicFunctionality/annotate/gifs/flames/flame.gif";
+
+var newMarker = function(googleMaps, lat, lng, map, id, masterArray, index){
+
     masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},
-      map: targetMap,
-      icon: {url: "./geographicFunctionality/annotate/gifs/fireSmall.gif",
-      title: 'Hello World!'},
+      map: map,
+      icon: {url: gif_FLAME},
+      iterationID: id,
+      //without "optimized: false", gif seems to freeze on server (but not on local)
       optimized: false,
-      iterationID: id
     });
 
     scalingHandler(googleMaps, map, masterArray[index]);
 
-    masterArray[index].addListener('click', function() {
-      $.ajax({
-        method: 'DELETE',
-        url: rootURL + '/api/flames/' + id
-      })
-      console.log("marker with id of " + id + " was deleted")
-    });
+    markerOnClick(masterArray[index], rootURL, id);
 };
 
 module.exports = newMarker;
