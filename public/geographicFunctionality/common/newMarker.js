@@ -1,6 +1,6 @@
 var scalingHandler      = require('./scalingHandler');
 var markerOnClick       = require('./markerOnClick');
-var rootURL             = require('../rootURL');
+var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 
 var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif";

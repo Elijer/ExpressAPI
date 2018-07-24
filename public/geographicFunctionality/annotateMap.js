@@ -1,7 +1,7 @@
 var rootURL             = require('../rootURL'),
     $                   = require('jquery');
 
-var newMarker           = require('./newMarker'),
+var newMarker           = require('./common/newMarker'),
     onZoomChange        = require('./onZoomChange');
 
 

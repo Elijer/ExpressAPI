@@ -1,5 +1,5 @@
 var $                   = require('jquery');
-var newMarker           = require('./newMarker');
+var newMarker           = require('./common/newMarker');
 
 var addClickListener = function(googleMaps, rootURL){
     map.addListener('click', function(e) {

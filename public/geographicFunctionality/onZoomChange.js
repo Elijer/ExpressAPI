@@ -1,4 +1,4 @@
-var scalingHandler  = require('./scalingHandler');
+var scalingHandler  = require('./common/scalingHandler');
 
 var onZoomChange = function(googleMaps){
   map.addListener('zoom_changed', function(e) {
