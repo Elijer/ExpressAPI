@@ -1,5 +1,5 @@
 var $                   = require('jquery'),
     rootURL             = require('./rootURL'),
-    geo                 = require('./geographicFunctionality/geo');
+    geo                 = require('./geographicFunctionality/1_geo');
 
 geo();

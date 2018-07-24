@@ -1,15 +1,13 @@
-var $                   = require('jquery'),
-    rootURL             = require('../rootURL'),
-    loadGoogleMapsApi   = require('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
-    mapConfig           = require('./mapConfig/mapConfig');
-
-var addClickListener    = require('./addClickListener');
+var $                   = require ('jquery'),
+    loadGoogleMapsApi   = require ('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
+    rootURL             = require ('../rootURL'),
+    mapConfig           = require ('./mapConfig/mapConfig'),
+    addClickListener    = require ('./addClickListener');
 
 loadGoogleMapsApi.key     = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
 buildMap = function(andThen){
   loadGoogleMapsApi().then(function (googleMaps) {
-    var darkStyle = require('./mapStyles/dark');
     var newMap = function(googleMaps){
       var map = new googleMaps.Map(document.getElementById('map'), mapConfig);
       return map;
@@ -27,12 +25,3 @@ buildMap = function(andThen){
 };
 
 module.exports = buildMap;
-
-/*
-
-            |------- buildMap -------
-geo -------+
-            |------- annotateMap ----
-
-
-*/

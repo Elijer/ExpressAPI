@@ -1,4 +1,4 @@
-var scalingHandler      = require('./scalingHandler');
+var scale               = require('./scale');
 var markerOnClick       = require('./markerOnClick');
 var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
@@ -16,7 +16,7 @@ var newMarker = function(googleMaps, lat, lng, id, index){
       optimized: false,
     });
 
-    scalingHandler(googleMaps, masterArray[index]);
+    scale(googleMaps, masterArray[index]);
 
     markerOnClick(masterArray[index], rootURL, id);
 };

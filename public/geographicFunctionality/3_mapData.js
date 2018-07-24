@@ -6,7 +6,7 @@ var newMarker           = require('./common/newMarker'),
 
 
 
-var annotateMap = function(googleMaps){
+var mapData = function(googleMaps){
   $.getJSON('api/flames')
   .then(function(data){
     for (var i = 0; i < data.length; i++){
@@ -17,7 +17,7 @@ var annotateMap = function(googleMaps){
   onZoomChange(googleMaps);
 }
 
-module.exports = annotateMap;
+module.exports = mapData;
 
 /*
 stuff I want the file structure to support:
