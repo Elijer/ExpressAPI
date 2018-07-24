@@ -1,4 +1,4 @@
-var rootURL             = require('../../rootURL'),
+var rootURL             = require('../rootURL'),
     $                   = require('jquery');
 
 var newMarker           = require('./newMarker'),

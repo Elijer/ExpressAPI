@@ -1,5 +1,5 @@
 var $                   = require('jquery'),
-    rootURL             = require('../../rootURL'),
+    rootURL             = require('../rootURL'),
     loadGoogleMapsApi   = require('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
     mapConfig           = require('./mapConfig');
 

@@ -1,5 +1,5 @@
-var     buildMap            = require('./build/buildMap'),
-        andThenAnnotateIt   = require('./annotate/annotateMap');
+var     buildMap            = require('./buildMap'),
+        andThenAnnotateIt   = require('./annotateMap');
 
 var geo = function(){
   buildMap(andThenAnnotateIt);

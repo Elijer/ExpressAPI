@@ -1,6 +1,5 @@
 var $                   = require('jquery');
-var createFlame     = require('../annotate/createFlame');
-var newMarker           = require('../annotate/newMarker');
+var newMarker           = require('./newMarker');
 
 var addClickListener = function(googleMaps, rootURL){
     map.addListener('click', function(e) {
