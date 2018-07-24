@@ -5,7 +5,7 @@ var onZoomChange = function(googleMaps){
     var markerInstance;
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
-      scalingHandler(googleMaps, map, markerInstance);
+      scalingHandler(googleMaps, markerInstance);
     }
   });
 }

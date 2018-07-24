@@ -1,6 +1,6 @@
 var makeFuego           = require('./fuego');
 
-var scalingHandler = function(googleMaps, map, markerInstance){
+var scalingHandler = function(googleMaps, markerInstance){
   var zoomLvl = map.zoom;
   var upperLimit = 18;
   var lowerLimit = 10;

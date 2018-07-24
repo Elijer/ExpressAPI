@@ -16,7 +16,7 @@ var newMarker = function(googleMaps, lat, lng, id, index){
       optimized: false,
     });
 
-    scalingHandler(googleMaps, map, masterArray[index]);
+    scalingHandler(googleMaps, masterArray[index]);
 
     markerOnClick(masterArray[index], rootURL, id);
 };
