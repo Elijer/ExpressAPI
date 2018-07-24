@@ -3,7 +3,6 @@ var $                   = require('jquery');
 
 var makeFuego           = require('./fuego');
 var newMarker           = require('./newMarker');
-var getFlames           = require('./getFlames');
 var renderFlames        = require('./renderFlames');
 var onZoomChange        = require('./onZoomChange');
 
