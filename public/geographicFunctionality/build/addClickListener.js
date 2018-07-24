@@ -6,7 +6,7 @@ var addClickListener = function(googleMaps, rootURL){
     //google maps stores click lat & lng in a weird way;
     var lat = e.latLng.lat();
     var lng = e.latLng.lng();
-    createFlame(googleMaps, map, lat, lng, rootURL, masterArray);
+    createFlame(googleMaps, lat, lng, rootURL, );
 
     //modal question
     /*

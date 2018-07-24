@@ -1,13 +1,13 @@
 var $                   = require('jquery');
 var newMarker           = require('./newMarker');
 
-var createFlame = function(googleMaps, map, lat, lng, rootUrl, array){
+var createFlame = function(googleMaps, lat, lng, rootUrl){
       $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
       .then(function(newFlame){
         console.log(newFlame);
         var newID = newFlame._id;
-        var position = array.length;
-        newMarker(googleMaps, lat, lng, map, newID, array, position);
+        var position = masterArray.length;
+        newMarker(googleMaps, lat, lng, map, newID, masterArray, position);
       })
       .catch(function(err){
         console.log(err);
