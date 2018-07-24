@@ -14,7 +14,7 @@ var annotateMap = function(googleMaps){
       newMarker(googleMaps, flame.lat, flame.lng, flame._id, i);
     };
   });
-  onZoomChange(googleMaps, map, masterArray);
+  onZoomChange(googleMaps);
 }
 
 module.exports = annotateMap;
