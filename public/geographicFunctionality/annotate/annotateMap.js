@@ -1,7 +1,6 @@
 var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 
-var makeFuego           = require('./fuego');
 var newMarker           = require('./newMarker');
 var renderFlames        = require('./renderFlames');
 var onZoomChange        = require('./onZoomChange');
