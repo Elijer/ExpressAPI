@@ -1,15 +1,12 @@
 var $                   = require('jquery');
 var createFlame     = require('../annotate/createFlame');
 
-var addClickListener = function(googleMaps, aMap, rootURL, array){
-    aMap.addListener('click', function(e) {
+var addClickListener = function(googleMaps, rootURL){
+    map.addListener('click', function(e) {
     //google maps stores click lat & lng in a weird way;
-    //var latLng = e.latLng;
     var lat = e.latLng.lat();
     var lng = e.latLng.lng();
-    //no modal
-    //createFlames is used both here and in the annotate folder. It lives in the annotate folder.
-    createFlame(googleMaps, aMap, lat, lng, rootURL, array);
+    createFlame(googleMaps, map, lat, lng, rootURL, masterArray);
 
     //modal question
     /*

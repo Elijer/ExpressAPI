@@ -17,7 +17,7 @@ buildMap = function(andThen){
     //Create map object and then pass it into AndThenAnnotateIt callback function
     map = newMap(googleMaps);
     masterArray = [];
-    addClickListener(googleMaps, map, rootURL, masterArray);
+    addClickListener(googleMaps, rootURL);
     andThen(googleMaps);
 
   }).catch(function (err) {
