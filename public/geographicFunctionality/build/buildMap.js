@@ -3,6 +3,8 @@ var $                   = require('jquery'),
     loadGoogleMapsApi   = require('load-google-maps-api-2'), //use googleMaps, not google.maps w/ this module
     mapConfig           = require('./mapConfig');
 
+var addClickListener    = require('./addClickListener');
+
 loadGoogleMapsApi.key     = 'AIzaSyBI6f3-WMTwlVP7CVhpKiMbVlWvgI0s1_E';
 
 buildMap = function(andThen){
@@ -15,6 +17,7 @@ buildMap = function(andThen){
     //Create map object and then pass it into AndThenAnnotateIt callback function
     map = newMap(googleMaps);
     masterArray = [];
+    addClickListener(googleMaps, map, rootURL, masterArray);
     andThen(googleMaps, map, masterArray);
 
   }).catch(function (err) {
