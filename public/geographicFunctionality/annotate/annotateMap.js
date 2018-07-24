@@ -8,17 +8,14 @@ var renderFlames        = require('./renderFlames');
 var onZoomChange        = require('./onZoomChange');
 
 var annotateMap = function(googleMaps, map, masterArray){
-  ///////////////////////
-  ///////////////////////
+
   $.getJSON('api/flames')
     .then(function(data){
       renderFlames(googleMaps, data);
   });
-  ///////////////////////
-  ///////////////////////
+
   onZoomChange(googleMaps, map, masterArray);
-  ///////////////////////
-  ///////////////////////
+
 }
 
 module.exports = annotateMap;
