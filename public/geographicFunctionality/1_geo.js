@@ -6,3 +6,40 @@ var geo = function(){
 };
 
 module.exports = geo;
+
+
+
+/*//////////////          BLUEPRINT          ////////////
+
+
+
+                            1_geo
+                              .
+                              |
+                              .
+                          2_buildMap
+                              .
+                              |
+                              .
+                    ......................................
+                    |                   |                |
+                    .                   .                .
+                3_mapData           mapClick         mapConfig
+                    .                   .                .
+                    |                   |                |
+             ............................            mapStyles
+             |                 |
+             .                 .
+        onZoomChange       newMarker
+             |                 |
+             .                 .
+             ............................
+                    |                   |
+                    .                   .
+                  scale            markerOnClick
+
+
+
+
+//////////////////////////////////////////////////////////
+*/
