@@ -1,55 +1,23 @@
-var rootURL             = require('../../rootURL');
-var $                   = require('jquery');
+var rootURL             = require('../../rootURL'),
+    $                   = require('jquery');
 
-var newMarker           = require('./newMarker');
-var renderFlames        = require('./renderFlames');
-var onZoomChange        = require('./onZoomChange');
+var newMarker           = require('./newMarker'),
+    onZoomChange        = require('./onZoomChange');
 
-var loopThrough = function(googleMaps, data, callback){
-  for (var i = 0; i < data.length; i++){
-    var flame = data[i];
-      callback(googleMaps, flame.lat, flame.lng, map, flame._id, masterArray, i);
-  };
-};
 
-var annotateMap = function(googleMaps, map, masterArray){
+
+var annotateMap = function(googleMaps){
   $.getJSON('api/flames')
   .then(function(data){
-      loopThrough(googleMaps, data, newMarker);
+    for (var i = 0; i < data.length; i++){
+      var flame = data[i];
+      newMarker(googleMaps, flame.lat, flame.lng, map, flame._id, masterArray, i);
+    };
   });
-
   onZoomChange(googleMaps, map, masterArray);
-
 }
 
 module.exports = annotateMap;
-
-
-/*
-annotateMap(){
-  getData(){
-    loopThrough(data){
-      createMarker(){
-        scalingHandler();
-      clickListener();
-      }
-    }
-  }
-}
-
-buildMap(callback, emptyArray){
-  andThenAnnotateIt(emptyArray);
-  clickListener(emptyArray){
-    emptyArray.push(
-      newMarker = createMarker(){
-        scalingHandler();
-        clickListener();
-      }
-    )
-  }
-};
-}
-*/
 
 /*
 stuff I want the file structure to support:

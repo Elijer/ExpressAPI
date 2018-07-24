@@ -18,7 +18,7 @@ buildMap = function(andThen){
     map = newMap(googleMaps);
     masterArray = [];
     addClickListener(googleMaps, map, rootURL, masterArray);
-    andThen(googleMaps, map, masterArray);
+    andThen(googleMaps);
 
   }).catch(function (err) {
     console.error(err);
