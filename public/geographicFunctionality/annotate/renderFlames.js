@@ -7,10 +7,10 @@ var newMarker           = require('./newMarker');
 };*/
 
 var renderFlames = function(googleMaps, data){
-  //console.log(data);
   for (var i = 0; i < data.length; i++){
     var flame = data[i];
-    newMarker(googleMaps, flame.lat, flame.lng, map, flame.id, masterArray, i);
+    //console.log(flame.id);
+    newMarker(googleMaps, flame.lat, flame.lng, map, flame._id, masterArray, i);
     //doSetTimeout(googleMaps, lat, lng, map, id, masterArray, i);
   };
 };
