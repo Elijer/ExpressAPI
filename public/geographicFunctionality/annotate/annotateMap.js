@@ -5,11 +5,17 @@ var newMarker           = require('./newMarker');
 var renderFlames        = require('./renderFlames');
 var onZoomChange        = require('./onZoomChange');
 
-var annotateMap = function(googleMaps, map, masterArray){
+var loopThrough = function(googleMaps, data, callback){
+  for (var i = 0; i < data.length; i++){
+    var flame = data[i];
+      callback(googleMaps, flame.lat, flame.lng, map, flame._id, masterArray, i);
+  };
+};
 
+var annotateMap = function(googleMaps, map, masterArray){
   $.getJSON('api/flames')
-    .then(function(data){
-      renderFlames(googleMaps, data);
+  .then(function(data){
+      loopThrough(googleMaps, data, newMarker);
   });
 
   onZoomChange(googleMaps, map, masterArray);
