@@ -7,7 +7,7 @@ var createFlame = function(googleMaps, lat, lng, rootUrl){
         console.log(newFlame);
         var newID = newFlame._id;
         var position = masterArray.length;
-        newMarker(googleMaps, lat, lng, map, newID, masterArray, position);
+        newMarker(googleMaps, lat, lng, newID, position);
       })
       .catch(function(err){
         console.log(err);

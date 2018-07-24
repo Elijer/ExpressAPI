@@ -5,7 +5,7 @@ var $                   = require('jquery');
 
 var gif_FLAME = "./geographicFunctionality/annotate/gifs/flames/flame.gif";
 
-var newMarker = function(googleMaps, lat, lng, map, id, masterArray, index){
+var newMarker = function(googleMaps, lat, lng, id, index){
 
     masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},

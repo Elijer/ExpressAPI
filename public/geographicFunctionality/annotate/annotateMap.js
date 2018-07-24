@@ -11,7 +11,7 @@ var annotateMap = function(googleMaps){
   .then(function(data){
     for (var i = 0; i < data.length; i++){
       var flame = data[i];
-      newMarker(googleMaps, flame.lat, flame.lng, map, flame._id, masterArray, i);
+      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i);
     };
   });
   onZoomChange(googleMaps, map, masterArray);
