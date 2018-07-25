@@ -14,6 +14,7 @@ var cors = require('cors');
 app.use(cors({origin: port}));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + 'html'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -21,12 +22,22 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);
 
-//serves a static page
-app.get('/', function(req, res){
-    res.sendFile("index.html");
+//var html_dir = './ten/';
+var options = {root: __dirname};
+
+
+
+app.get('/', function(req, res) {
+    res.sendFile("./views/index.html");
 });
 
-app.use('/api/todos', todoRoutes);
+app.get('/contact', function(req, res) {
+    res.sendFile('./ten/contact.html', options);
+});
+
+app.get('/hello', function(req, res) {
+    res.sendFile('./ten/hello.html', options);
+});
 
 app.listen(port, function(){
     console.log("APP IS RUNNING ON PORT " + port);
