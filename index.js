@@ -1,8 +1,4 @@
-/*public endpoints w/ current IP address
-curl http://169.254.169.254/latest/meta-data/public-ipv4
-http://54.174.153.254:8080
-*/
-
+////DEPENDENCIES
 var express = require('express'),
     port = require('./elijah/port'),
     app = express(),
@@ -11,21 +7,23 @@ var todoRoutes = require('./API_Todo/routes/todos');
 var flameRoutes = require('./API_Flame/routes/flames');
 var cors = require('cors');
 
+////Specify which folder express should look in for static content
 app.use(cors({origin: port}));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + 'html'));
 
+//Necessary for POST requests to work correctly.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//Declare the API routes and the routing files to use with them
 app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);
 
-//var html_dir = './ten/';
+
+//Declares static content routes, i.e. javascript and html for the apps, not the APIs
 var options = {root: __dirname};
-
-
 
 app.get('/', function(req, res) {
     res.sendFile("./views/index.html");
@@ -39,6 +37,8 @@ app.get('/hello', function(req, res) {
     res.sendFile('./ten/hello.html', options);
 });
 
+
+//Tells me if express is running or not
 app.listen(port, function(){
     console.log("APP IS RUNNING ON PORT " + port);
 });
