@@ -11,7 +11,7 @@ var cors = require('cors');
 app.use(cors({origin: port}));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + 'html'));
+app.use(express.static(__dirname + '/ten'));
 
 //Necessary for POST requests to work correctly.
 app.use(bodyParser.json());
@@ -35,6 +35,10 @@ app.get('/contact', function(req, res) {
 
 app.get('/hello', function(req, res) {
     res.sendFile('./ten/hello.html', options);
+});
+
+app.get('/ten', function(req, res) {
+    res.sendFile('./ten/ten.html', options);
 });
 
 
