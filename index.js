@@ -5,6 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser');
 var todoRoutes = require('./API_Todo/routes/todos');
 var flameRoutes = require('./API_Flame/routes/flames');
+var tenRoutes = require('./API_Ten/routes/todos');
 var cors = require('cors');
 
 ////Specify which folder express should look in for static content
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Declare the API routes and the routing files to use with them
 app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);
+app.use('/api/ten', tenRoutes);
 
 
 //Declares static content routes, i.e. javascript and html for the apps, not the APIs
