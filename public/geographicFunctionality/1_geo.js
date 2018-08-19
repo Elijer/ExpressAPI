@@ -5,7 +5,6 @@ var     buildMap            = require('./2_buildMap'),
 var geo = function(){
   buildMap(andThenAnnotateIt);
 };
-
 geolocation();
 
 module.exports = geo;
