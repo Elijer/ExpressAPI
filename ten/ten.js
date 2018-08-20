@@ -14,7 +14,7 @@ var newTen = function(){
 $(document).ready(function() {
   $("#target").submit(function(event) {
     event.preventDefault();
-    console.log("handler called");
+    //console.log("handler called");
     /*$.post(rootURL + '/api/ten', {value: 6})
     .then(function(newFlame){
       console.log(newFlame);
@@ -24,10 +24,10 @@ $(document).ready(function() {
     });*/
   });
 
-  $('#hi').click(function(event){
-    //console.log('yo');
-    //console.log(event);
-    $.post(rootURL + '/api/ten', {value: 10})
+  $('#target').submit(function(event){
+    var value = $("#theText").val();
+    console.log(value);
+    $.post(rootURL + '/api/ten', {value: value})
     .then(function(newFlame){
       console.log(newFlame);
     })
