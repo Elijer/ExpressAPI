@@ -7,6 +7,18 @@ var onZoomChange = function(googleMaps){
       markerInstance = masterArray[i];
       scale(googleMaps, markerInstance);
     }
+
+    ///timer experiment
+    var zoomInterval = setInterval(myTimer, 166.5);
+
+    function myTimer() {
+      console.log(Math.random(0, 1));
+    }
+
+    setTimeout(function(){
+      clearInterval(zoomInterval);
+    }, 333);
+
   });
 }
 
