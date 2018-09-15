@@ -1,25 +1,36 @@
 var makeFuego           = require('./fuego');
 
 var scale = function(googleMaps, markerInstance, zoomLvl){
-  //console.log(zoomLvl);
-  //zoom level should be passed IN as an arg instead of being queried for everything single iteration
-  //ooh shit, yah, these scaling calculations are all done for every single marker too.
-  //Like, the re-scaling should be redone for each marker
-  //but NOT the calculations themselves. those should be done once.
 
-  var closest = 22;
-  var farthest = 13;
-  var scaleTool;
+  //google zoom level range: 0-22
+  //get the zoom level at any time by calling "map.getZoom();"
+
+  var closest = 22, //don't continue scaling up gif past above zoom level
+      farthest = 12, //don't continue scaling down gif below this zoom level
+
+      oneOne = 21; /*the zoom level at which scaling coefficient = 1
+
+  In other words, if oneOne = 22 and the user is zoomed into 22, that's the scale at which
+  The gif will be displayed at full size. If you never even want it to reach this size,
+  make the value of oneOne even higher than the highest zoom level possible, which is 22.
+
+  @22, a 300px*556px gif is about the size of a trashcan
+  @18, it's like the size of the WL building.
+  */
+
+  var scalingCoefficient;
 
   if (zoomLvl >= closest){
-    var scaleTool = Math.pow(2, ((closest-8)*-1));
+    var scalingCoefficient = Math.pow(2, ((closest-oneOne)*-1));
   } else if (zoomLvl <= farthest) {
-    var scaleTool = Math.pow(2, ((farthest-8)*-1));
+    //var scalingCoefficient = Math.pow(2, ((farthest-oneOne)*-1));
+    scalingCoefficient = 300; //this is about as small as they go
+    //I should really replace them with static images at this point though.
   } else {
-    var scaleTool = Math.pow(2, ((zoomLvl-8)*-1));
+    var scalingCoefficient = Math.pow(2, ((zoomLvl-oneOne)*-1));
   };
 
-  var fuego = makeFuego(googleMaps, scaleTool, 5000);
+  var fuego = makeFuego(googleMaps, scalingCoefficient);
 
   //iterator
     var current = markerInstance.icon;
@@ -73,6 +84,22 @@ I like the last one the most;
 
     2^(X - 14)*-1
 
-At 14, the default zoom, this comes out to 1.
+At 14, the default zoom, this comes out to 1, creating this:
+
+07 ---> .0078125
+08 ---> .015625
+09 ---> .03125
+10 ---> .0625
+11 ---> .125
+12 ---> .25
+13 ---> .5
+14 ---> 1
+15 ---> 2
+16 ---> 4
+17 ---> 8
+18 ---> 16
+19 ---> 32
+20 ---> 64
+21 ---> 128
 
 */

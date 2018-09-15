@@ -1,6 +1,5 @@
-var makeFuego = function(googleMaps, scaleTool, calibrate){
+var makeFuego = function(googleMaps, scale){
   //flame.gif dimensions = (300 x 556);
-  var scale = calibrate*scaleTool,
       markerX = 300/scale,
       markerY = 556/scale,
       //the anchors signify where on the gif's pixel grid is the anchor, relative

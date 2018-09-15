@@ -8,6 +8,14 @@ var darkStyle = [
     ]
   },
   {
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "elementType": "labels.icon",
     "stylers": [
       {
@@ -76,15 +84,6 @@ var darkStyle = [
   },
   {
     "featureType": "poi",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
     "elementType": "labels.text.fill",
     "stylers": [
       {
@@ -125,15 +124,6 @@ var darkStyle = [
     "stylers": [
       {
         "color": "#2c2c2c"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels",
-    "stylers": [
-      {
-        "visibility": "off"
       }
     ]
   },
@@ -202,15 +192,6 @@ var darkStyle = [
   },
   {
     "featureType": "water",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
     "elementType": "labels.text.fill",
     "stylers": [
       {
@@ -219,5 +200,3 @@ var darkStyle = [
     ]
   }
 ]
-
-module.exports = darkStyle;
