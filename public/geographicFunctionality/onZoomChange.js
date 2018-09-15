@@ -1,5 +1,5 @@
 var scale  = require('./common/scale');
-var scaleAnimate  = require('./common/scaleAnimate');
+var scaleAnimator  = require('./common/scaleAnimator');
 
 
 var onZoomChange = function(googleMaps){
@@ -9,23 +9,9 @@ var onZoomChange = function(googleMaps){
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
       //scale(googleMaps, markerInstance);
-      scaleAnimate(googleMaps, markerInstance, newZoom);
+      scaleAnimator(googleMaps, markerInstance, newZoom);
       //scaleAnimate(googleMaps, markerInstance, currentScale);
     }
-
-    ///timer experiment
-    var zoomInterval = setInterval(myTimer, 166.5);
-    //166.5 is roughly half of .333 seconds, allowing two instances to fire during zoom animation
-
-    function myTimer() {
-      console.log(Math.random(0, 1));
-    }
-
-    setTimeout(function(){
-      clearInterval(zoomInterval);
-    }, 333);
-    ///.333 seconds is the amount of time it takes for the zoom animation on google maps to happen
-
   });
 }
 
