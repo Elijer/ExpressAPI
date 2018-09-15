@@ -3,14 +3,16 @@ var scaleAnimator  = require('./common/scaleAnimator');
 
 
 var onZoomChange = function(googleMaps){
-  map.addListener('zoom_changed', function(e) {
+  map.addListener('zoom_changed', function(zzzz) {
     var newZoom = map.getZoom();
+    console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
     var markerInstance;
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
       scale(googleMaps, markerInstance, newZoom);
       //scaleAnimator(googleMaps, markerInstance, newZoom);
     }
+    map.oldZoom = newZoom;
   });
 }
 

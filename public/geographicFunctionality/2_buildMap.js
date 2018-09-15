@@ -10,6 +10,7 @@ buildMap = function(andThen){
   loadGoogleMapsApi().then(function (googleMaps) {
     var newMap = function(googleMaps){
       var map = new googleMaps.Map(document.getElementById('map'), mapConfig);
+      map.oldZoom = map.getZoom();
       return map;
     };
 
