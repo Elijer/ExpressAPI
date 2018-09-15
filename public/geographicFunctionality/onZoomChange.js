@@ -4,11 +4,12 @@ var scaleAnimate  = require('./common/scaleAnimate');
 
 var onZoomChange = function(googleMaps){
   map.addListener('zoom_changed', function(e) {
-    console.log(map.getZoom());
+    var newZoom = map.getZoom();
     var markerInstance;
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
-      scale(googleMaps, markerInstance);
+      //scale(googleMaps, markerInstance);
+      scaleAnimate(googleMaps, markerInstance, newZoom);
       //scaleAnimate(googleMaps, markerInstance, currentScale);
     }
 
