@@ -11,7 +11,8 @@ var mapData = function(googleMaps){
   .then(function(data){
     for (var i = 0; i < data.length; i++){
       var flame = data[i];
-      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i);
+      var zoomLvl = map.getZoom();
+      newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, zoomLvl);
     };
   });
   onZoomChange(googleMaps);

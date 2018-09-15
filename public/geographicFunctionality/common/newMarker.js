@@ -5,7 +5,7 @@ var $                   = require('jquery');
 
 var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif";
 
-var newMarker = function(googleMaps, lat, lng, id, index){
+var newMarker = function(googleMaps, lat, lng, id, index, zoomLvl){
 
     masterArray[index] = new googleMaps.Marker({
       position: {lat: lat, lng: lng},
@@ -16,7 +16,7 @@ var newMarker = function(googleMaps, lat, lng, id, index){
       optimized: false,
     });
 
-    scale(googleMaps, masterArray[index]);
+    scale(googleMaps, masterArray[index], zoomLvl);
 
     markerOnClick(masterArray[index], rootURL, id);
 };

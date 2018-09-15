@@ -13,7 +13,8 @@ var mapClick = function(googleMaps, rootURL){
             console.log(newFlame);
             var newID = newFlame._id;
             var position = masterArray.length;
-            newMarker(googleMaps, lat, lng, newID, position);
+            var zoomLvl = map.getZoom();
+            newMarker(googleMaps, lat, lng, newID, position, zoomLvl);
           })
           .catch(function(err){
             console.log(err);
