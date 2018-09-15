@@ -5,14 +5,12 @@ var express = require('express'),
     bodyParser = require('body-parser');
 var todoRoutes = require('./API_Todo/routes/todos');
 var flameRoutes = require('./API_Flame/routes/flames');
-var tenRoutes = require('./API_Ten/routes/todos');
 var cors = require('cors');
 
 ////Specify which folder express should look in for static content
 app.use(cors({origin: port}));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/ten'));
 
 //Necessary for POST requests to work correctly.
 app.use(bodyParser.json());
@@ -21,7 +19,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 //Declare the API routes and the routing files to use with them
 app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);
-app.use('/api/ten', tenRoutes);
 
 
 //Declares static content routes, i.e. javascript and html for the apps, not the APIs
@@ -37,10 +34,6 @@ app.get('/contact', function(req, res) {
 
 app.get('/hello', function(req, res) {
     res.sendFile('./ten/hello.html', options);
-});
-
-app.get('/ten', function(req, res) {
-    res.sendFile('./ten/ten.html', options);
 });
 
 
