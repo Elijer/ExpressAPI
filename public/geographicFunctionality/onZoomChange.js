@@ -8,9 +8,8 @@ var onZoomChange = function(googleMaps){
     var markerInstance;
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
-      //scale(googleMaps, markerInstance);
-      scaleAnimator(googleMaps, markerInstance, newZoom);
-      //scaleAnimate(googleMaps, markerInstance, currentScale);
+      scale(googleMaps, markerInstance);
+      //scaleAnimator(googleMaps, markerInstance, newZoom);
     }
   });
 }

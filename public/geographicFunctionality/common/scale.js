@@ -2,6 +2,11 @@ var makeFuego           = require('./fuego');
 
 var scale = function(googleMaps, markerInstance){
   var zoomLvl = map.zoom;
+  //zoom level should be passed IN as an arg instead of being queried for everything single iteration
+  //ooh shit, yah, these scaling calculations are all done for every single marker too.
+  //Like, the re-scaling should be redone for each marker
+  //but NOT the calculations themselves. those should be done once.
+
   var upperLimit = 18;
   var lowerLimit = 10;
   var scaleTool;

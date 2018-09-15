@@ -1,4 +1,4 @@
-var makeFuego           = require('./fuego');
+var scaleIteration           = require('./scaleIteration');
 
 var scaleAnimator = function(googleMaps, markerInstance, newZoom){
   //console.log(newZoom);
@@ -6,6 +6,7 @@ var scaleAnimator = function(googleMaps, markerInstance, newZoom){
   var subdivides = 4;
   var countDown = subdivides
   var interval = duration/subdivides;
+  var zoom = newZoom;
 
     var zoomInterval = setInterval(myTimer, interval);
 
@@ -13,8 +14,8 @@ var scaleAnimator = function(googleMaps, markerInstance, newZoom){
 
     function myTimer() {
       console.log(countDown);
-      countDown--
-        //scaleIteration(googleMaps, markerInstance, currentScale, iteration)
+      //this is where the scaleIteration should go
+      countDown--;
     }
 
     setTimeout(function(){

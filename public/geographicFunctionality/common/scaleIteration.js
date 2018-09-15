@@ -1,7 +1,6 @@
 var makeFuego           = require('./fuego');
 
-var scale = function(googleMaps, markerInstance){
-  var zoomLvl = map.zoom;
+var scaleIteration = function(googleMaps, markerInstance){
   var upperLimit = 18;
   var lowerLimit = 10;
   var scaleTool;
@@ -15,6 +14,7 @@ var scale = function(googleMaps, markerInstance){
   };
 
   var fuego = makeFuego(googleMaps, scaleTool, 32);
+  console.log(scaleTool);
 
   //iterator
     var current = markerInstance.icon;
@@ -23,4 +23,4 @@ var scale = function(googleMaps, markerInstance){
     current.anchor = fuego.anchor;
 };
 
-module.exports = scale;
+module.exports = scaleIteration;
