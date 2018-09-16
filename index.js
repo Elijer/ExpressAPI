@@ -1,11 +1,12 @@
 ////DEPENDENCIES
-var express = require('express'),
-    port = require('./elijah/port'),
-    app = express(),
-    bodyParser = require('body-parser');
-var todoRoutes = require('./API_Todo/routes/todos');
-var flameRoutes = require('./API_Flame/routes/flames');
-var cors = require('cors');
+//♪♫♩♬ ----> https://youtu.be/kEPakJDkTOk?t=30m39s
+var express       = require('express'),
+    port          = require('./elijah/port'),
+    app           = express(),
+    bodyParser    = require('body-parser');
+
+var flameRoutes   = require('./API_Flame/routes/flames');
+var cors          = require('cors');
 
 ////Specify which folder express should look in for static content
 app.use(cors({origin: port}));
@@ -17,7 +18,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //Declare the API routes and the routing files to use with them
-app.use('/api/todos', todoRoutes);
 app.use('/api/flames', flameRoutes);
 
 
@@ -44,23 +44,9 @@ app.listen(port, function(){
 
 
 
-/*          NOTES
+/*          SOME OTHER FUN ROUTES
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
- ---to get public ip run "curl http://169.254.169.254/latest/meta-data/public-ipv4"
- ---you might need to do this, as AWS does not gaurantee a static IP, so I guess it's subject to change.
-
-<<<<<<< HEAD
-//echo 'mongod --bind_ip=$IP --dbpath=data --nojournal --rest "$@"' > mongod
-//chmod a+x mongod
-
-
-
-
-
-
-
-/*
 app.get('/noah', function(req, res){
     res.send("weirdly driven in a way that, at times seems very foreign from both his parents.");
 });
