@@ -18,6 +18,27 @@ var onZoomChange = function(googleMaps){
 
 module.exports = onZoomChange;
 
+/*
+
+Potential solution for potential future problem: It may be very laggy to load a large amount of
+markers that may appear at like, zoom level 16, or zoom level 10.
+
+So, I can do this. At zoom level 16, they will be loaded as static images, tiny ones that have
+been optimized to be very small, rudimentary files.
+
+At zoom level 10, then can simply dissappear. I should make sure that I am implementing
+a this in a way that doesn't even render them at all -- it's more than possible that
+google maps uses up the same amount of CPU rending a marker that is 0px by 0px as it does
+for one that is 100x100.
+
+If I want, I could probably even substitute them with a heatmap.
+
+But then when you zoom in, they become individual (at like 16), and beautiful gifs at 18 or 19.
+
+This approach could make sure that no matter how many markers are loaded, it still won't overload
+the rendering capabilities of the server.
+
+*/
 
 
 ///okay so this is what I'm doing right now -- currently the scale function take the arguments of googlemaps
