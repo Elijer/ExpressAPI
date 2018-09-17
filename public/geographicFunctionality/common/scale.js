@@ -1,6 +1,8 @@
 var makeFuego           = require('./fuego');
+var scaleCalculator     =require('./scaleCalculator');
 
 var scale = function(googleMaps, markerInstance, zoomLvl){
+  console.log(scaleCalculator(zoomLvl));
 
   //google zoom level range: 0-22
   //get the zoom level at any time by calling "map.getZoom();"
