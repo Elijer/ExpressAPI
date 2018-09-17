@@ -1,15 +1,20 @@
 var scale  = require('./common/scale');
 var scaleAnimator  = require('./common/scaleAnimator');
+var scaleCalculator     =require('./common/scaleCalculator');
 
 
 var onZoomChange = function(googleMaps){
   map.addListener('zoom_changed', function(zzzz) {
     var newZoom = map.getZoom();
+    var scalingCoefficient = scaleCalculator(newZoom);
+
+
+
     console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
     var markerInstance;
     for (var i = 0; i < masterArray.length; i++ ) {
       markerInstance = masterArray[i];
-      scale(googleMaps, markerInstance, newZoom);
+      scale(googleMaps, markerInstance, scalingCoefficient);
       //scaleAnimator(googleMaps, markerInstance, newZoom);
     }
     map.oldZoom = newZoom;
