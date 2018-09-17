@@ -2,7 +2,6 @@ var makeFuego           = require('./fuego');
 var scaleCalculator     =require('./scaleCalculator');
 
 var scale = function(googleMaps, markerInstance, zoomLvl){
-  console.log(scaleCalculator(zoomLvl));
 
   //google zoom level range: 0-22
   //get the zoom level at any time by calling "map.getZoom();"
@@ -21,27 +20,29 @@ var scale = function(googleMaps, markerInstance, zoomLvl){
   */
 
   var scalingCoefficient;
-  var display;
+  //var display;
 
   if (zoomLvl >= closest){
     var scalingCoefficient = Math.pow(2, ((closest-oneOne)*-1));
-    display = true;
+          //display = true;
   } else if (zoomLvl <= farthest) {
     //var scalingCoefficient = Math.pow(2, ((farthest-oneOne)*-1));
-    //scalingCoefficient = 300; //this is about as small as they go
-    display = false;
+    scalingCoefficient = 300; //this is about as small as they go
+          //display = false;
     //markerInstance.setVisible(false);
     //scalingCoefficient = 1000; //this is about as small as they go
     //I should really replace them with static images at this point though.
   } else {
-    display = true;
+          //display = true;
     var scalingCoefficient = Math.pow(2, ((zoomLvl-oneOne)*-1));
   };
 
+  /*
   if (!display){
     markerInstance.setVisible(false);
   } else {
     markerInstance.setVisible(true);
+    */
 
     var fuego = makeFuego(googleMaps, scalingCoefficient);
     //iterator
@@ -49,8 +50,7 @@ var scale = function(googleMaps, markerInstance, zoomLvl){
       current.size = fuego.size;
       current.scaledSize = fuego.size;
       current.anchor = fuego.anchor;
-  };
-}
+};
 
 module.exports = scale;
 
