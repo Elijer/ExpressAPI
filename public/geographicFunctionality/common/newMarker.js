@@ -3,7 +3,11 @@ var markerOnClick       = require('./markerOnClick');
 var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 
-var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif";
+//Flame static
+//var gif_FLAME = "./geographicFunctionality/gifs/flames/flameStatic.gif";
+
+//flame Gif
+var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
 
 var newMarker = function(googleMaps, lat, lng, id, index, zoomLvl){
 

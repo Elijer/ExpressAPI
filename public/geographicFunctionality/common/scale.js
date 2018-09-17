@@ -19,25 +19,36 @@ var scale = function(googleMaps, markerInstance, zoomLvl){
   */
 
   var scalingCoefficient;
+  var display;
 
   if (zoomLvl >= closest){
     var scalingCoefficient = Math.pow(2, ((closest-oneOne)*-1));
+    display = true;
   } else if (zoomLvl <= farthest) {
     //var scalingCoefficient = Math.pow(2, ((farthest-oneOne)*-1));
-    scalingCoefficient = 300; //this is about as small as they go
+    //scalingCoefficient = 300; //this is about as small as they go
+    display = false;
+    //markerInstance.setVisible(false);
+    //scalingCoefficient = 1000; //this is about as small as they go
     //I should really replace them with static images at this point though.
   } else {
+    display = true;
     var scalingCoefficient = Math.pow(2, ((zoomLvl-oneOne)*-1));
   };
 
-  var fuego = makeFuego(googleMaps, scalingCoefficient);
+  if (!display){
+    markerInstance.setVisible(false);
+  } else {
+    markerInstance.setVisible(true);
 
-  //iterator
-    var current = markerInstance.icon;
-    current.size = fuego.size;
-    current.scaledSize = fuego.size;
-    current.anchor = fuego.anchor;
-};
+    var fuego = makeFuego(googleMaps, scalingCoefficient);
+    //iterator
+      var current = markerInstance.icon;
+      current.size = fuego.size;
+      current.scaledSize = fuego.size;
+      current.anchor = fuego.anchor;
+  };
+}
 
 module.exports = scale;
 
