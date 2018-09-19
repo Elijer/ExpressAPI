@@ -2,22 +2,25 @@ var scale               = require('./scale');
 var markerOnClick       = require('./markerOnClick');
 var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
-var scaleCalculator     =require('./scaleCalculator');
 
 //flame Gif
 var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
 
 
-var newMarker = function(googleMaps, lat, lng, id, index, zoomLvl){
-  var scalingCoefficient = scaleCalculator(zoomLvl);
+var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
 
   masterArray[index] = new googleMaps.Marker({
     position: {lat: lat, lng: lng},
     map: map,
     icon: {url: gif_FLAME},
     iterationID: id,
-    //without "optimized: false", gif seems to freeze on server (but not on local)
     optimized: false,
+    /*optimize is a useful, complicated option that will take still gifs and pngs and save them
+    into one image or something, drastically increasing performance. However, if markers are created as
+    optimized, it seems impossible to change them later. If they are created with optimized: false,
+    it is possible then to change them to 'true' and back again, but doing this seems to sacrifice
+    any performance improvements optimization achieves anyways.
+    */
   });
 
   scale(googleMaps, masterArray[index], scalingCoefficient);

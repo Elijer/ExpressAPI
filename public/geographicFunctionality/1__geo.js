@@ -1,12 +1,10 @@
-var     buildMap            = require('./2_buildMap'),
-        andThenAnnotateIt   = require('./3_mapData'),
+var     buildMap            = require('./2__buildMap'),
         geolocation         = require ('./geolocation');
 
 var geo = function(){
-  buildMap(andThenAnnotateIt);
+  buildMap();
 };
-
-//geolocation();
+geolocation();
 
 module.exports = geo;
 

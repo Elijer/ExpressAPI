@@ -1,6 +1,7 @@
 var $                   = require('jquery'),
     newMarker           = require('./common/newMarker'),
     rootURL             = require ('../rootURL');
+    scaleCalculator     =require('./common/scaleCalculator');
 
 var mapClick = function(googleMaps){
     map.addListener('click', function(e) {
@@ -15,7 +16,8 @@ var mapClick = function(googleMaps){
             var newID = newFlame._id;
             var position = masterArray.length;
             var zoomLvl = map.getZoom();
-            newMarker(googleMaps, lat, lng, newID, position, zoomLvl);
+            var scalingCoefficient = scaleCalculator(zoomLvl);
+            newMarker(googleMaps, lat, lng, newID, position, scalingCoefficient);
           })
           .catch(function(err){
             console.log(err);
@@ -24,16 +26,6 @@ var mapClick = function(googleMaps){
 
     createFlame(googleMaps, lat, lng, rootURL);
 
-    //modal question
-    /*
-    if (confirm("Hey my guy! Would you like to log the coordinates of this location?")) {
-        console.log(lng);
-        console.log(lat);
-        createFlame(lat, lng, rootURL);
-    } else {
-        console.log("cancelled logging of coords");
-    }
-    */
   });
 };
 
