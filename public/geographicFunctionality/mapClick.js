@@ -1,7 +1,8 @@
-var $                   = require('jquery');
-var newMarker           = require('./common/newMarker');
+var $                   = require('jquery'),
+    newMarker           = require('./common/newMarker'),
+    rootURL             = require ('../rootURL');
 
-var mapClick = function(googleMaps, rootURL){
+var mapClick = function(googleMaps){
     map.addListener('click', function(e) {
     //google maps stores click lat & lng in a weird way;
     var lat = e.latLng.lat();

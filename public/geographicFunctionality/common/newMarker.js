@@ -4,9 +4,6 @@ var rootURL             = require('../../rootURL');
 var $                   = require('jquery');
 var scaleCalculator     =require('./scaleCalculator');
 
-//Flame static
-//var gif_FLAME = "./geographicFunctionality/gifs/flames/flameStatic.gif";
-
 //flame Gif
 var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
 
@@ -25,7 +22,7 @@ var newMarker = function(googleMaps, lat, lng, id, index, zoomLvl){
 
   scale(googleMaps, masterArray[index], scalingCoefficient);
   markerOnClick(masterArray[index], rootURL, id);
-  
+
 };
 
 module.exports = newMarker;

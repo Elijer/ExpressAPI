@@ -5,7 +5,6 @@ var newMarker           = require('./common/newMarker'),
     onZoomChange        = require('./onZoomChange');
 
 
-
 var mapData = function(googleMaps){
   $.getJSON('api/flames')
   .then(function(data){
