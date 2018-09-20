@@ -23,6 +23,29 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
     */
   });
 
+
+
+
+  var r = .00003;
+  var h = r / .83333333333;
+  gifArray[index] = new google.maps.Rectangle({
+    elijahPosition: {lat: lat, lng: lng},
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    fillColor: '#FF0000',
+    fillOpacity: 1,
+    map: map,
+    bounds: {
+      north: lat+r,
+      south: lat-r,
+      east:  lng+h,
+      west:  lng-h
+    }
+  });
+
+
+
   scale(googleMaps, masterArray[index], scalingCoefficient);
   markerOnClick(masterArray[index], rootURL, id);
 
