@@ -3,6 +3,7 @@ var rootURL             = require('../rootURL'),
 
 var newMarker           = require('./common/newMarker'),
     onZoomChange        = require('./onZoomChange'),
+    onBoundsChange        = require('./onBoundsChange'),
     scaleCalculator     =require('./common/scaleCalculator');
 
 
@@ -17,6 +18,7 @@ var mapData = function(googleMaps){
     };
   });
   onZoomChange(googleMaps);
+  //onBoundsChange(googleMaps);
   /* wait to call onZoomChange until after markers created; onZoomChange resizes them
   and there's nothing to resize until they exist */
 }
