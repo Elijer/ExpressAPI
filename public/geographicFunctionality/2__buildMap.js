@@ -11,6 +11,8 @@ buildMap = function(){
 
     map = newMap(googleMaps);
     masterArray = [];
+    gifArray = [];
+
     mapClick(googleMaps);
     getMapData(googleMaps);
 
