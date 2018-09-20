@@ -3,6 +3,7 @@ var makeFuego           = require('./fuego');
 var scale = function(googleMaps, markerInstance, scalingCoefficient){
     var fuego = makeFuego(googleMaps, scalingCoefficient);
     //iterator
+      markerInstance.visible = true;
       var current = markerInstance.icon;
       current.size = fuego.size;
       current.scaledSize = fuego.size;

@@ -8,12 +8,28 @@ var onZoomChange = function(googleMaps){
     var newZoom = map.getZoom();
     console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
 
-    var scalingCoefficient = scaleCalculator(newZoom);
-    var markerInstance;
-    for (var i = 0; i < masterArray.length; i++ ) {
-      markerInstance = masterArray[i];
-      scale(googleMaps, markerInstance, scalingCoefficient);
-      //scaleAnimator(googleMaps, markerInstance, newZoom);
+    if (newZoom >= 17){
+      var scalingCoefficient = scaleCalculator(newZoom);
+      var markerInstance;
+      for (var i = 0; i < masterArray.length; i++ ) {
+        markerInstance = masterArray[i];
+        //markerInstance.visible = true;
+        scale(googleMaps, markerInstance, scalingCoefficient);
+        gifArray[i].map = null;
+        //scaleAnimator(googleMaps, markerInstance, newZoom);
+        console.log(gifArray[i]);
+
+        /*
+        strokeOpacity: 0.8
+        fillOpacity: 1
+        */
+      }
+    } else {
+      for (var i = 0; i < masterArray.length; i++ ) {
+        masterArray[i].visible = false;
+        gifArray[i].map = map;
+        //gifArray[i].visible = true;
+      }
     }
     map.oldZoom = newZoom;
   });

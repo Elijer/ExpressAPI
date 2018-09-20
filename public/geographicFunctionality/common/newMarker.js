@@ -15,6 +15,7 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
     icon: {url: gif_FLAME},
     iterationID: id,
     optimized: false,
+    visible: false
     /*optimize is a useful, complicated option that will take still gifs and pngs and save them
     into one image or something, drastically increasing performance. However, if markers are created as
     optimized, it seems impossible to change them later. If they are created with optimized: false,
