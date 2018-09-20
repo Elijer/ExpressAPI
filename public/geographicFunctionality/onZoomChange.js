@@ -8,16 +8,42 @@ var onZoomChange = function(googleMaps){
     var newZoom = map.getZoom();
     console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
 
+    var counter = 0;
+    for (var i = 0; i < masterArray.length; i++ ) {
+      var currentBounds = map.getBounds();
+      if (currentBounds.contains(masterArray[i].elijahPosition)){
+        counter++;
+      }
+    };
+    console.log(counter);
+
+
+
+    /*if (currentBounds.contains(latLng)){
+      markerInstance.setVisible(true);
+      var fuego = makeFuego(googleMaps, scalingCoefficient);
+      var ruford = makeRuford(googleMaps, scalingCoefficient)
+      //iterator
+        var current = markerInstance.icon;
+        current.size = ruford.size;
+        current.scaledSize = ruford.size;
+        current.anchor = ruford.anchor;
+    } else {
+      markerInstance.setVisible(false);
+    }*/
+
+
+
     if (newZoom >= 17){
       var scalingCoefficient = scaleCalculator(newZoom);
       var markerInstance;
       for (var i = 0; i < masterArray.length; i++ ) {
         markerInstance = masterArray[i];
         //markerInstance.visible = true;
+        markerInstance.setVisible(true);
         scale(googleMaps, markerInstance, scalingCoefficient);
-        gifArray[i].map = null;
+        gifArray[i].setMap(null);
         //scaleAnimator(googleMaps, markerInstance, newZoom);
-        console.log(gifArray[i]);
 
         /*
         strokeOpacity: 0.8
@@ -27,7 +53,7 @@ var onZoomChange = function(googleMaps){
     } else {
       for (var i = 0; i < masterArray.length; i++ ) {
         masterArray[i].visible = false;
-        gifArray[i].map = map;
+        gifArray[i].setMap(map);
         //gifArray[i].visible = true;
       }
     }

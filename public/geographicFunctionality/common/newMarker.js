@@ -10,6 +10,7 @@ var gif_FLAME = "./geographicFunctionality/gifs/flames/flame.gif"
 var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
 
   masterArray[index] = new googleMaps.Marker({
+    elijahPosition: {lat: lat, lng: lng},
     position: {lat: lat, lng: lng},
     map: map,
     icon: {url: gif_FLAME},
@@ -31,10 +32,10 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({
     elijahPosition: {lat: lat, lng: lng},
-    strokeColor: '#FF0000',
+    strokeColor: '#f9371c',
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    fillColor: '#FF0000',
+    fillColor: '#fed130',
     fillOpacity: 1,
     map: map,
     bounds: {
