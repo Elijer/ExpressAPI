@@ -65,7 +65,7 @@ var onZoomChange = function(googleMaps){
 
 
 
-  var renderLimit = 11;
+  var renderLimit = 30;
   map.addListener('bounds_changed', function(){
     var markerInstance;
     var mCount = 0;
@@ -85,6 +85,7 @@ var onZoomChange = function(googleMaps){
         m = masterArray[i];
         if (currentBounds.contains(m.elijahPosition)){
           m.setVisible(true);
+          gifArray[i].setMap(null);
           scale(googleMaps, m, scalingCoefficient);
           console.log('iterated');
         }
@@ -94,6 +95,7 @@ var onZoomChange = function(googleMaps){
       for (var i = 0; i < masterArray.length; i++ ) {
         m = masterArray[i];
         m.setVisible(false);
+        gifArray[i].setMap(map);
       }
     }
   })
