@@ -24,8 +24,8 @@ display posts as gifs when the conditions are right.
 var onBoundsChange = function(googleMaps){
   map.addListener('bounds_changed', function(){
     var currentBounds = map.getBounds();
-    var renderLimit = 60;
-    var zoomLimit = 16;
+    var renderLimit = 80;
+    var zoomLimit = 17;
     var mCount = 0;
     var underRenderLimit = true;
     var newZoom = map.getZoom();
@@ -33,9 +33,14 @@ var onBoundsChange = function(googleMaps){
 
     if (newZoom >= zoomLimit){
     //DETERMINES IF # OF POSTS < renderLimit
+    var paddedBounds = boundsPadder(googleMaps, currentBounds, .45);
       for (var i = 0; i < masterArray.length; i++ ) {
         m = masterArray[i];
-        if (currentBounds.contains(m.elijahPosition)){
+        //using paddedBounds here includes markers just out of sight
+        //when determining amount of markers contained
+        //Considering making the paddedBounds change per zoom level -- it's really the most important
+        //for higher zoom levels
+        if (paddedBounds.contains(m.elijahPosition)){
           mCount++;
         }
         if (mCount > renderLimit){
@@ -47,7 +52,6 @@ var onBoundsChange = function(googleMaps){
     //IF SO, RENDERS GIFS FOR THOSE THAT ARE IN currentBounds
     //AND HIDES THOSE THAT ARE NOT
       if (underRenderLimit){
-        var paddedBounds = boundsPadder(googleMaps, currentBounds, .5);
         //boundsPrinter(googleMaps);
         //var paddedBounds = boundsPadder(bounds, padding)
         var scalingCoefficient = scaleCalculator(newZoom);
