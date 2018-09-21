@@ -47,14 +47,14 @@ var onBoundsChange = function(googleMaps){
     //IF SO, RENDERS GIFS FOR THOSE THAT ARE IN currentBounds
     //AND HIDES THOSE THAT ARE NOT
       if (underRenderLimit){
-        //boundsPadder(currentBounds, 100);
-        boundsPrinter(googleMaps);
+        var paddedBounds = boundsPadder(googleMaps, currentBounds, .5);
+        //boundsPrinter(googleMaps);
         //var paddedBounds = boundsPadder(bounds, padding)
         var scalingCoefficient = scaleCalculator(newZoom);
         var m;
         for (var i = 0; i < masterArray.length; i++ ) {
           m = masterArray[i];
-          if (currentBounds.contains(m.elijahPosition)){
+          if (paddedBounds.contains(m.elijahPosition)){
             m.setVisible(true);
             gifArray[i].setMap(null);
             scale(googleMaps, m, scalingCoefficient);

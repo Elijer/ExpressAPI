@@ -1,22 +1,24 @@
 var shortestDistance = require('./shortestDistance');
 
-var boundsPrinter = function(googleMaps, scale){
+var boundsPrinter = function(googleMaps, amount){
     var boundsPrinterName = map.addListener('click', function(e) {
     var center = map.getCenter();
     var bounds = map.getBounds();
-    printBounds(googleMaps, center, bounds, scale);
+    printBounds(googleMaps, center, bounds, amount); //prints with amount of padding specified
+    printBounds(googleMaps, center, bounds, 0); //prints without padding
     })
 }
 
-var printBounds = function(googleMaps, center, bounds, scale){
+var printBounds = function(googleMaps, center, bounds, amount){
+  // I don't fucking know why google defines the bounds object this way,
+  // but it's so confusing. So I give new values that are easier to read.
   var north = bounds.f.f;
   var south = bounds.f.b;
   var east  = bounds.b.f;
   var west  = bounds.b.b;
 
-
-  var horizontalPadding = (shortestDistance(west, east)/2) * scale;
-  var verticalPadding = (shortestDistance(north, south)/2) * scale;
+  var horizontalPadding = (shortestDistance(west, east)/2) * amount;
+  var verticalPadding = (shortestDistance(north, south)/2) * amount;
 
 
   var screenBounds = new google.maps.Rectangle({

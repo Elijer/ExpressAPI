@@ -17,7 +17,7 @@ buildMap = function(){
 
     //CLICK EVENTS: SELECT ONE;
     //mapClick(googleMaps); //marker gets added to map
-    boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
+    //boundsPrinter(googleMaps, 1); //tool for viewing the previous bounds of a screen
 
     getMapData(googleMaps);
 

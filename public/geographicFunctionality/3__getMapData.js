@@ -18,7 +18,7 @@ var mapData = function(googleMaps){
     };
   });
   //onZoomChange(googleMaps);
-  //onBoundsChange(googleMaps);
+  onBoundsChange(googleMaps);
   /* wait to call onZoomChange until after markers created; onZoomChange resizes them
   and there's nothing to resize until they exist */
 }
