@@ -32,6 +32,7 @@ var onBoundsChange = function(googleMaps){
     console.log(newZoom);
 
     if (newZoom >= zoomLimit){
+    //VISIBLE POST DETERMINER LOOP:
     //DETERMINES IF # OF POSTS < renderLimit
     var paddedBounds = boundsPadder(googleMaps, currentBounds, .45);
       for (var i = 0; i < masterArray.length; i++ ) {
@@ -49,7 +50,8 @@ var onBoundsChange = function(googleMaps){
         }
       }
 
-    //IF SO, RENDERS GIFS FOR THOSE THAT ARE IN currentBounds
+    //GIF RENDERING LOOP
+    //RENDERS GIFS FOR THOSE THAT ARE IN currentBounds (or in padded bounds)
     //AND HIDES THOSE THAT ARE NOT
       if (underRenderLimit){
         //boundsPrinter(googleMaps);
@@ -64,6 +66,7 @@ var onBoundsChange = function(googleMaps){
             scale(googleMaps, m, scalingCoefficient);
           }
         }
+        //Hides all gifs if under render limit
       } else {
         for (var i = 0; i < masterArray.length; i++ ) {
           var m = masterArray[i];
@@ -71,6 +74,7 @@ var onBoundsChange = function(googleMaps){
           gifArray[i].setMap(map);
         }
       }
+      //hides all gifs if over scale limit
     } else {
       for (var i = 0; i < masterArray.length; i++ ) {
         var m = masterArray[i];
