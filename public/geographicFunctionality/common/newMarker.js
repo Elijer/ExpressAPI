@@ -34,7 +34,7 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
     elijahPosition: {lat: lat, lng: lng},
     strokeColor: '#f9371c',
     strokeOpacity: 0.8,
-    strokeWeight: 1,
+    strokeWeight: 2,
     fillColor: '#fed130',
     fillOpacity: 1,
     map: map,

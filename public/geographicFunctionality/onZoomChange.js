@@ -65,7 +65,7 @@ var onZoomChange = function(googleMaps){
 
 
 
-  var renderLimit = 30;
+  var renderLimit = 60;
   map.addListener('bounds_changed', function(){
     var markerInstance;
     var mCount = 0;
