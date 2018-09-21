@@ -1,4 +1,4 @@
-var printBounds = function(googleMaps, center, bounds){
+var printBounds = function(googleMaps, center, bounds, scale){
   var screenBounds = new google.maps.Rectangle({
     elijahPosition: center,
     strokeColor: '#f9371c',
@@ -12,20 +12,12 @@ var printBounds = function(googleMaps, center, bounds){
   screenBounds.setMap(map);
 };
 
-var boundsPrinter = function(googleMaps, on){
-  if (on){
-    map.addListener('click', function(e) {
+var boundsPrinter = function(googleMaps, scale){
+    var boundsPrinterName = map.addListener('click', function(e) {
     var center = map.getCenter();
     var bounds = map.getBounds();
-    printBounds(googleMaps, center, bounds);
+    printBounds(googleMaps, center, bounds, scale);
     })
-  } else {
-    console.log('noop');
-    /*
-    var listenerHandle = google.maps.event.addListener(map, 'bounds_changed', function() {
-    google.maps.event.removeListener(listenerHandle);
-    */
-  }
 }
 
 module.exports = boundsPrinter;

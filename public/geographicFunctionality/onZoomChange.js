@@ -32,7 +32,6 @@ Good luck! You're doin great :)
 var scale             = require('./common/scale');
 var scaleAnimator     = require('./common/scaleAnimator');
 var scaleCalculator   =require('./common/scaleCalculator');
-var boundsPrinter     = require('./tools/boundsPrinter');
 
 
 
@@ -59,15 +58,45 @@ var onZoomChange = function(googleMaps){
 
   map.addListener('zoom_changed', function() {
     var newZoom = map.getZoom();
-    console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
+    //scale(googleMaps, m, scalingCoefficient);
+    //console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
     map.oldZoom = newZoom;
   })
 
-  map.addListener('bounds_changed', function(){
-    console.log(map.getBounds());
-  })
 
-  boundsPrinter(googleMaps, true);
+
+  var renderLimit = 11;
+  map.addListener('bounds_changed', function(){
+    var markerInstance;
+    var mCount = 0;
+    var currentBounds = map.getBounds();
+    for (var i = 0; i < masterArray.length; i++ ) {
+      m = masterArray[i];
+      if (currentBounds.contains(m.elijahPosition)){
+        mCount++;
+      }
+    }
+    if (mCount < renderLimit){
+      console.log('below limit');
+      var newZoom = map.getZoom();
+      var scalingCoefficient = scaleCalculator(newZoom);
+      var m;
+      for (var i = 0; i < masterArray.length; i++ ) {
+        m = masterArray[i];
+        if (currentBounds.contains(m.elijahPosition)){
+          m.setVisible(true);
+          scale(googleMaps, m, scalingCoefficient);
+          console.log('iterated');
+        }
+      }
+    } else {
+      var m;
+      for (var i = 0; i < masterArray.length; i++ ) {
+        m = masterArray[i];
+        m.setVisible(false);
+      }
+    }
+  })
 
 
 }

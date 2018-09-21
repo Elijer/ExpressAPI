@@ -7,14 +7,16 @@ var scaleCalculator     = require('./common/scaleCalculator');
 var createFlame = function(googleMaps, lat, lng, rootUrl){
       $.post(rootUrl + '/api/flames', {lat: lat, lng: lng})
       .then(function(newFlame){
-        console.log(newFlame);
+        //console.log(newFlame);
+        //console.log("the lat here is " + newFlame.lat);
+        console.log("the lng here is " + newFlame.lng)
 
         var newID = newFlame._id,
             position = masterArray.length,
             zoomLvl = map.getZoom(),
             scalingCoefficient = scaleCalculator(zoomLvl);
 
-        newMarker(googleMaps, lat, lng, newID, position, scalingCoefficient);
+        //newMarker(googleMaps, lat, lng, newID, position, scalingCoefficient);
 
 
       })
