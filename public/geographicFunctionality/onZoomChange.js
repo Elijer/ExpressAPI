@@ -1,8 +1,93 @@
+
+/* PEP TALK
+
+You can use this:
+  map.addListener('bounds_changed'...
+
+Look. I this is going to be really light on the rendering, it needs to be air tight.
+It needs to be optimized. I need you to think about all of your options here,
+and to think ahead about potential problems so you aren't wasting time foolin around.
+What is the most efficient way to do this? What are the shortcuts?
+
+And I need you to experiment, too. Like by answering these questions:
+
+In a controlled environment, which is better --
+setMap(null), opacity = 0, visible = false?
+Ad nauseum. Figure it out.
+How expensive is it to be calculating the number of markers in the viewfinder?
+You can obviously cut the function off once it reaches a certain number.
+the scale() function can be fired separately in a 'zoom_changed' listener,
+for speed, OR it could be fired within 'bounds_changed'. I don't know which ones
+is cpu thriftier.
+
+And at bigger zoom levels, you can cut it off anyways.
+
+There can be a careful network of if statements.
+
+Good luck! You're doin great :)
+
+
+*/
+
 var scale  = require('./common/scale');
 var scaleAnimator  = require('./common/scaleAnimator');
 var scaleCalculator     =require('./common/scaleCalculator');
 
 
+
+
+var onZoomChange = function(googleMaps){
+
+
+  var makeScreenBounds = function(){
+    var center = map.getCenter();
+    var theBounds = map.getBounds()
+    var screenBounds = new google.maps.Rectangle({
+      elijahPosition: center,
+      strokeColor: '#f9371c',
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      fillColor: '#fed130',
+      fillOpacity: .05,
+      map: map,
+      bounds: theBounds
+    });
+    screenBounds.setMap(map);
+  };
+
+
+  map.addListener('zoom_changed', function() {
+    var newZoom = map.getZoom();
+    console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
+    map.oldZoom = newZoom;
+  })
+
+  map.addListener('bounds_changed', function(){
+    console.log(map.getBounds());
+  })
+
+  map.addListener('click', function(e) {
+    //var lat = e.latLng.lat();
+    //var lng = e.latLng.lng();
+    var center = map.getCenter();
+
+    var r = .00003;
+
+    makeScreenBounds();
+  });
+
+
+}
+
+
+
+
+
+module.exports = onZoomChange;
+
+
+
+/*
 var onZoomChange = function(googleMaps){
   map.addListener('zoom_changed', function(zzzz) {
     var newZoom = map.getZoom();
@@ -29,11 +114,6 @@ var onZoomChange = function(googleMaps){
         scale(googleMaps, markerInstance, scalingCoefficient);
         gifArray[i].setMap(null);
         //scaleAnimator(googleMaps, markerInstance, newZoom);
-
-        /*
-        strokeOpacity: 0.8
-        fillOpacity: 1
-        */
       }
     } else {
       for (var i = 0; i < masterArray.length; i++ ) {
@@ -78,12 +158,14 @@ var onZoomChange = function(googleMaps){
         gifArray[i].setMap(map);
         //gifArray[i].visible = true;
       }
-    }*/
+    }
     map.oldZoom = newZoom;
   });
 }
+*/
 
-module.exports = onZoomChange;
+
+
 
 /*
 

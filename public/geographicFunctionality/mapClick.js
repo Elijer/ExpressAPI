@@ -8,7 +8,7 @@ var mapClick = function(googleMaps){
     var lat = e.latLng.lat();
     var lng = e.latLng.lng();
 
-    createFlame(googleMaps, lat, lng, rootURL);
+    //createFlame(googleMaps, lat, lng, rootURL);
 
   });
 };
