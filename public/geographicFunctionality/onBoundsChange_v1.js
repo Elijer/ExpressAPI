@@ -59,6 +59,12 @@ var onBoundsChange = function(googleMaps){
           gifArray[i].setMap(map);
         }
       }
+    } else {
+      for (var i = 0; i < masterArray.length; i++ ) {
+        var m = masterArray[i];
+        m.setVisible(false);
+        gifArray[i].setMap(map);
+      }
     }
   })
 }
