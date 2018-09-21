@@ -18,8 +18,9 @@ var boundsPrinter = function(googleMaps, on){
     var center = map.getCenter();
     var bounds = map.getBounds();
     printBounds(googleMaps, center, bounds);
-    }
+    })
   } else {
+    console.log('noop');
     /*
     var listenerHandle = google.maps.event.addListener(map, 'bounds_changed', function() {
     google.maps.event.removeListener(listenerHandle);

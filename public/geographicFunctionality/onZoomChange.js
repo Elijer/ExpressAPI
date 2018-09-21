@@ -29,9 +29,10 @@ Good luck! You're doin great :)
 
 */
 
-var scale  = require('./common/scale');
-var scaleAnimator  = require('./common/scaleAnimator');
-var scaleCalculator     =require('./common/scaleCalculator');
+var scale             = require('./common/scale');
+var scaleAnimator     = require('./common/scaleAnimator');
+var scaleCalculator   =require('./common/scaleCalculator');
+var boundsPrinter     = require('./tools/boundsPrinter');
 
 
 
@@ -66,15 +67,7 @@ var onZoomChange = function(googleMaps){
     console.log(map.getBounds());
   })
 
-  map.addListener('click', function(e) {
-    //var lat = e.latLng.lat();
-    //var lng = e.latLng.lng();
-    var center = map.getCenter();
-
-    var r = .00003;
-
-    makeScreenBounds();
-  });
+  boundsPrinter(googleMaps, true);
 
 
 }
