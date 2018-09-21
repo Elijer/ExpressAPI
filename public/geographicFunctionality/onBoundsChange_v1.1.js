@@ -1,24 +1,23 @@
 var scale               = require('./common/scale');
 var scaleCalculator     = require('./common/scaleCalculator');
+var boundsPrinter        = require('./tools/boundsPrinter');
+var boundsPadder        = require('./tools/boundsPadder');
 
 //var scaleAnimator       = require('./common/scaleAnimator');
 //var renderLoop          = require('./tools/renderLoop');
 
 /*
-DESCRIPTION: See the description for './onBoundsChange_v1'.
+DESCRIPTION: This Function adds a 'bounds_changed' listener to the map.
+This listener runs a function that validates;
+1) whether the map is zoomed in enough to run (i.e., above zoomLimit)
+2) there is a small enough # of posts (underRenderLimit) within current bounds to display them
+    as gifs without significant lag.
 
-This function borrows a lot of the rationale and function of v1, but
-adds on the intelligence of displaying only the most recent posts, and
-hiding the older ones, thereby taken relevance into account as to what
-to display.
+The purpose of this function is mostly that of compromise -- the goal of the function is to
+display posts as gifs when the conditions are right.
 
-In order for this to work, the database query needs to be made in acsending order
-using the following code in API_FLAME/flames_routes.js:
 
-                exports.getTodos = function(req, res){
-                    db.Todo.find().sort( {created_date: -1 } )
-                    ...
-                }
+//1.1 improvements --- wider bounding box for smoother loading of gifs
 */
 
 
@@ -48,6 +47,9 @@ var onBoundsChange = function(googleMaps){
     //IF SO, RENDERS GIFS FOR THOSE THAT ARE IN currentBounds
     //AND HIDES THOSE THAT ARE NOT
       if (underRenderLimit){
+        //boundsPadder(currentBounds, 100);
+        boundsPrinter(googleMaps);
+        //var paddedBounds = boundsPadder(bounds, padding)
         var scalingCoefficient = scaleCalculator(newZoom);
         var m;
         for (var i = 0; i < masterArray.length; i++ ) {

@@ -3,7 +3,7 @@ var $                   = require('jquery');
 
 var newMarker           = require('./common/newMarker');
 //var onZoomChange        = require('./onZoomChange');
-var onBoundsChange      = require('./onBoundsChange_v1');
+var onBoundsChange      = require('./onBoundsChange_v1.1');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
@@ -18,7 +18,7 @@ var mapData = function(googleMaps){
     };
   });
   //onZoomChange(googleMaps);
-  onBoundsChange(googleMaps);
+  //onBoundsChange(googleMaps);
   /* wait to call onZoomChange until after markers created; onZoomChange resizes them
   and there's nothing to resize until they exist */
 }
