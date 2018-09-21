@@ -1,30 +1,17 @@
 
-/* PEP TALK
+/* Notes on EFFICIENCY
 
-You can use this:
-  map.addListener('bounds_changed'...
+Which is better --
+1. setMap(null)
+2. opacity = 0
+3. visible = false?
 
-Look. I this is going to be really light on the rendering, it needs to be air tight.
-It needs to be optimized. I need you to think about all of your options here,
-and to think ahead about potential problems so you aren't wasting time foolin around.
-What is the most efficient way to do this? What are the shortcuts?
 
-And I need you to experiment, too. Like by answering these questions:
+The scale() function can be fired separately in a 'zoom_changed' listener,
+for speed, OR it could be fired within 'bounds_changed'. It would be better to
+ONLY fire scale whent he map ACTUALLY scales. Hmm how to do this.
 
-In a controlled environment, which is better --
-setMap(null), opacity = 0, visible = false?
-Ad nauseum. Figure it out.
-How expensive is it to be calculating the number of markers in the viewfinder?
-You can obviously cut the function off once it reaches a certain number.
-the scale() function can be fired separately in a 'zoom_changed' listener,
-for speed, OR it could be fired within 'bounds_changed'. I don't know which ones
-is cpu thriftier.
-
-And at bigger zoom levels, you can cut it off anyways.
-
-There can be a careful network of if statements.
-
-Good luck! You're doin great :)
+At higher zoom levels, the bounds_changed shit can be cut off entirely.
 
 
 */
@@ -61,43 +48,6 @@ var onZoomChange = function(googleMaps){
     //scale(googleMaps, m, scalingCoefficient);
     //console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
     map.oldZoom = newZoom;
-  })
-
-
-
-  var renderLimit = 60;
-  map.addListener('bounds_changed', function(){
-    var markerInstance;
-    var mCount = 0;
-    var currentBounds = map.getBounds();
-    for (var i = 0; i < masterArray.length; i++ ) {
-      m = masterArray[i];
-      if (currentBounds.contains(m.elijahPosition)){
-        mCount++;
-      }
-    }
-    if (mCount < renderLimit){
-      console.log('below limit');
-      var newZoom = map.getZoom();
-      var scalingCoefficient = scaleCalculator(newZoom);
-      var m;
-      for (var i = 0; i < masterArray.length; i++ ) {
-        m = masterArray[i];
-        if (currentBounds.contains(m.elijahPosition)){
-          m.setVisible(true);
-          gifArray[i].setMap(null);
-          scale(googleMaps, m, scalingCoefficient);
-          console.log('iterated');
-        }
-      }
-    } else {
-      var m;
-      for (var i = 0; i < masterArray.length; i++ ) {
-        m = masterArray[i];
-        m.setVisible(false);
-        gifArray[i].setMap(map);
-      }
-    }
   })
 
 

@@ -1,10 +1,10 @@
-var rootURL             = require('../rootURL'),
-    $                   = require('jquery');
+var rootURL             = require('../rootURL');
+var $                   = require('jquery');
 
-var newMarker           = require('./common/newMarker'),
-    onZoomChange        = require('./onZoomChange'),
-    onBoundsChange        = require('./onBoundsChange'),
-    scaleCalculator     =require('./common/scaleCalculator');
+var newMarker           = require('./common/newMarker');
+//var onZoomChange        = require('./onZoomChange');
+var onBoundsChange      = require('./onBoundsChange_v1');
+var scaleCalculator     = require('./common/scaleCalculator');
 
 
 var mapData = function(googleMaps){
@@ -17,8 +17,8 @@ var mapData = function(googleMaps){
       newMarker(googleMaps, flame.lat, flame.lng, flame._id, i, scalingCoefficient);
     };
   });
-  onZoomChange(googleMaps);
-  //onBoundsChange(googleMaps);
+  //onZoomChange(googleMaps);
+  onBoundsChange(googleMaps);
   /* wait to call onZoomChange until after markers created; onZoomChange resizes them
   and there's nothing to resize until they exist */
 }
