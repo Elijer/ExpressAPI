@@ -18,7 +18,7 @@ var onBoundsChange = function(googleMaps){
   map.addListener('bounds_changed', function(){
     var currentBounds = map.getBounds();
     var renderLimit = 70;
-    var zoomLimit = 15;
+    var zoomLimit = 16;
     var mCount = 0;
     var underRenderLimit = true;
     var newZoom = map.getZoom();
