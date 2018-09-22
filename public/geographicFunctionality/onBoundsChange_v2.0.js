@@ -17,6 +17,7 @@ var boundsPadder        = require('./tools/boundsPadder');
 var onBoundsChange = function(googleMaps){
   map.addListener('bounds_changed', function(){
     var currentBounds = map.getBounds();
+    var paddedBounds = boundsPadder(googleMaps, currentBounds, .45);
     var renderLimit = 70;
     var zoomLimit = 16;
     var mCount = 0;
@@ -28,7 +29,7 @@ var onBoundsChange = function(googleMaps){
 
     if (newZoom < zoomLimit){
       for (var i = 0; i < masterArray.length; i++ ) { //flips map to show squares, hide gifs
-        if (currentBounds.contains(masterArray[i].elijahPosition)){
+        if (paddedBounds.contains(masterArray[i].elijahPosition)){
           masterArray[i].setVisible(false);
           gifArray[i].setMap(map);
         }
@@ -45,7 +46,7 @@ var onBoundsChange = function(googleMaps){
           }
           break; //and then skips the rendering of any new flames since the limit's been hit
         } else {
-          if (currentBounds.contains(masterArray[i].elijahPosition)){
+          if (paddedBounds.contains(masterArray[i].elijahPosition)){
             scale(googleMaps, masterArray[i], scalingCoefficient); //scales the new gif
             masterArray[i].setVisible(true); //displays the gif
             gifArray[i].setMap(null); //hides its corresponding square
