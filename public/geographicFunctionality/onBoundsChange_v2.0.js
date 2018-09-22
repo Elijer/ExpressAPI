@@ -28,8 +28,10 @@ var onBoundsChange = function(googleMaps){
 
     if (newZoom < zoomLimit){
       for (var i = 0; i < masterArray.length; i++ ) { //flips map to show squares, hide gifs
-        masterArray[i].setVisible(false);
-        gifArray[i].setMap(map);
+        if (currentBounds.contains(masterArray[i].elijahPosition)){
+          masterArray[i].setVisible(false);
+          gifArray[i].setMap(map);
+        }
       }
     } else {
       var counter = 0;
@@ -50,7 +52,7 @@ var onBoundsChange = function(googleMaps){
             counter++; //keeps track to make sure it doesn't render any gifs past the renderLimit
           } else {
             masterArray[i].setVisible(false); // any gifs outside viewport are hidden
-            gifArray[i].setMap(null); // as are any squares
+            //gifArray[i].setMap(null); // as are any squares
           }
         }
       }
