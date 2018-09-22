@@ -28,13 +28,13 @@ var newMarker = function(googleMaps, lat, lng, id, index, scalingCoefficient){
 
 
 
-  var r = .00003;
+  var r = .00005;
   var h = r / .83333333333;
   gifArray[index] = new google.maps.Rectangle({
     elijahPosition: {lat: lat, lng: lng},
     strokeColor: '#f9371c',
     strokeOpacity: 0.8,
-    strokeWeight: 2,
+    strokeWeight: 1.4,
     fillColor: '#fed130',
     fillOpacity: 1,
     map: map,

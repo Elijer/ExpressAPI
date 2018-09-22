@@ -1,4 +1,5 @@
 //var darkStyle = require('./mapStyles/dark');
+//https://mapstyle.withgoogle.com/
 var mapStyle = require('./mapStyles/dark_cities');
 
 var mapConfig = {

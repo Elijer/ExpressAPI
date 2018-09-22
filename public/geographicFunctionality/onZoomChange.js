@@ -1,141 +1,31 @@
-
-/* Notes on EFFICIENCY
-
-Which is better --
-1. setMap(null)
-2. opacity = 0
-3. visible = false?
-
-
-The scale() function can be fired separately in a 'zoom_changed' listener,
-for speed, OR it could be fired within 'bounds_changed'. It would be better to
-ONLY fire scale whent he map ACTUALLY scales. Hmm how to do this.
-
-At higher zoom levels, the bounds_changed shit can be cut off entirely.
-
-
-*/
-
 var scale             = require('./common/scale');
 var scaleAnimator     = require('./common/scaleAnimator');
 var scaleCalculator   =require('./common/scaleCalculator');
 
 
-
-
 var onZoomChange = function(googleMaps){
-
-
-  var makeScreenBounds = function(){
-    var center = map.getCenter();
-    var theBounds = map.getBounds()
-    var screenBounds = new google.maps.Rectangle({
-      elijahPosition: center,
-      strokeColor: '#f9371c',
-      strokeOpacity: 0.8,
-      strokeWeight: 1,
-      fillColor: '#fed130',
-      fillOpacity: .05,
-      map: map,
-      bounds: theBounds
-    });
-    screenBounds.setMap(map);
-  };
-
-
   map.addListener('zoom_changed', function() {
     var newZoom = map.getZoom();
     //scale(googleMaps, m, scalingCoefficient);
     //console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
     map.oldZoom = newZoom;
   })
-
-
 }
-
-
-
-
 
 module.exports = onZoomChange;
 
 
 
-/*
-var onZoomChange = function(googleMaps){
-  map.addListener('zoom_changed', function(zzzz) {
-    var newZoom = map.getZoom();
-    console.log("So the old zoom was " + map.oldZoom + ", but the new zoom is " + newZoom);
+/* Notes on EFFICIENCY
+---------------------
+A) Which is better;
+  1. setMap(null)
+  2. opacity = 0
+  3. visible = false?
 
-    var renderLimit = 10;
-
-    var counter = 0;
-    for (var i = 0; i < masterArray.length; i++ ) {
-      var currentBounds = map.getBounds();
-      if (currentBounds.contains(masterArray[i].elijahPosition)){
-        counter++;
-      }
-    };
-    console.log(counter);
-
-    if (counter <= 10){
-      var scalingCoefficient = scaleCalculator(newZoom);
-      var markerInstance;
-      for (var i = 0; i < masterArray.length; i++ ) {
-        markerInstance = masterArray[i];
-        //markerInstance.visible = true;
-        markerInstance.setVisible(true);
-        scale(googleMaps, markerInstance, scalingCoefficient);
-        gifArray[i].setMap(null);
-        //scaleAnimator(googleMaps, markerInstance, newZoom);
-      }
-    } else {
-      for (var i = 0; i < masterArray.length; i++ ) {
-        masterArray[i].visible = false;
-        gifArray[i].setMap(map);
-        //gifArray[i].visible = true;
-      }
-    }
-
-
-
-    /*if (currentBounds.contains(latLng)){
-      markerInstance.setVisible(true);
-      var fuego = makeFuego(googleMaps, scalingCoefficient);
-      var ruford = makeRuford(googleMaps, scalingCoefficient)
-      //iterator
-        var current = markerInstance.icon;
-        current.size = ruford.size;
-        current.scaledSize = ruford.size;
-        current.anchor = ruford.anchor;
-    } else {
-      markerInstance.setVisible(false);
-    }*/
-
-
-
-    /*
-    if (newZoom >= 17){
-      var scalingCoefficient = scaleCalculator(newZoom);
-      var markerInstance;
-      for (var i = 0; i < masterArray.length; i++ ) {
-        markerInstance = masterArray[i];
-        //markerInstance.visible = true;
-        markerInstance.setVisible(true);
-        scale(googleMaps, markerInstance, scalingCoefficient);
-        gifArray[i].setMap(null);
-        //scaleAnimator(googleMaps, markerInstance, newZoom);
-      }
-    } else {
-      for (var i = 0; i < masterArray.length; i++ ) {
-        masterArray[i].visible = false;
-        gifArray[i].setMap(map);
-        //gifArray[i].visible = true;
-      }
-    }
-    map.oldZoom = newZoom;
-  });
-}
+B)  The scale() function can be fired separately in a 'zoom_changed' listener,
+    for speed, OR it could be fired within 'bounds_changed'. It would be better to
+    ONLY fire scale whent he map ACTUALLY scales. Hmm how to do this..
 */
 
 

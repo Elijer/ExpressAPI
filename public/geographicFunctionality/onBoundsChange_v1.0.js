@@ -4,17 +4,6 @@ var scaleCalculator     = require('./common/scaleCalculator');
 //var scaleAnimator       = require('./common/scaleAnimator');
 //var renderLoop          = require('./tools/renderLoop');
 
-/*
-DESCRIPTION: This Function adds a 'bounds_changed' listener to the map.
-This listener runs a function that validates;
-1) whether the map is zoomed in enough to run (i.e., above zoomLimit)
-2) there is a small enough # of posts (underRenderLimit) within current bounds to display them
-    as gifs without significant lag.
-
-The purpose of this function is mostly that of compromise -- the goal of the function is to
-display posts as gifs when the conditions are right.
-*/
-
 
 var onBoundsChange = function(googleMaps){
   map.addListener('bounds_changed', function(){
@@ -24,10 +13,12 @@ var onBoundsChange = function(googleMaps){
     var mCount = 0;
     var underRenderLimit = true;
     var newZoom = map.getZoom();
-    console.log(newZoom);
+
 
     if (newZoom >= zoomLimit){
-    //DETERMINES IF # OF POSTS < renderLimit
+
+//    A) VISIBLE POST DETERMINER LOOP:
+//    DETERMINES IF # OF POSTS < renderLimit
       for (var i = 0; i < masterArray.length; i++ ) {
         m = masterArray[i];
         if (currentBounds.contains(m.elijahPosition)){
@@ -39,8 +30,8 @@ var onBoundsChange = function(googleMaps){
         }
       }
 
-    //IF SO, RENDERS GIFS FOR THOSE THAT ARE IN currentBounds
-    //AND HIDES THOSE THAT ARE NOT
+//    B) GIF RENDERING LOOP:
+//    Renders gifs in current bounds (or paddedBounds) and hides the rest
       if (underRenderLimit){
         var scalingCoefficient = scaleCalculator(newZoom);
         var m;
@@ -53,6 +44,7 @@ var onBoundsChange = function(googleMaps){
           }
         }
       } else {
+//      Hides all gifs if under render limit
         for (var i = 0; i < masterArray.length; i++ ) {
           var m = masterArray[i];
           m.setVisible(false);
@@ -60,6 +52,7 @@ var onBoundsChange = function(googleMaps){
         }
       }
     } else {
+//    Hides all gifs if over scale limit      
       for (var i = 0; i < masterArray.length; i++ ) {
         var m = masterArray[i];
         m.setVisible(false);
