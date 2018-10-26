@@ -1,10 +1,14 @@
 var shortestDistance = require('./shortestDistance');
 
 var boundsPadder = function(googleMaps, bounds, amount){
-  var north = bounds.f.f;
-  var south = bounds.f.b;
-  var east  = bounds.b.f;
-  var west  = bounds.b.b;
+  var north = bounds.j.j;
+  var south = bounds.j.l;
+  var east  = bounds.l.j;
+  var west  = bounds.l.l;
+  //google maps changed it from the letter l and b to j and l for some reason.
+  //...
+  ///those fuckers
+
 
   var horizontalPadding = (shortestDistance(west, east)/2) * amount;
   var verticalPadding = (shortestDistance(north, south)/2) * amount;

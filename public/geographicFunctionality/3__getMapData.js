@@ -3,7 +3,8 @@ var $                   = require('jquery');
 
 var newMarker           = require('./common/newMarker');
 //var onZoomChange        = require('./onZoomChange');
-var onBoundsChange      = require('./onBoundsChange_v2.0');
+//var onBoundsChange      = require('./onBoundsChange_v2.0');
+var onBoundsChange      = require('./onBoundsChange_v1.0');
 var scaleCalculator     = require('./common/scaleCalculator');
 
 
